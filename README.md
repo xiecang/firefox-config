@@ -12,13 +12,17 @@ This repository contains a set of scripts and configuration files that can be us
 # Features
 
 - Integrated UC scripts using the fx-autoconfig solution, which includes mouse gestures, bookmark tiling, privacy tab merging, shortcut keys, and more.
-- Beautified the interface, adjusted the style, added icons, and used a vertical tab bar. The Sidebery extension needs to be installed, and the default tab bar is hidden. (If you need to enable it, comment out the @import url("css/SideBarFox/sidebar.css"); in chrome/css/userChrome.css.)
+- Beautified the interface, adjusted the style, added icons, and used a vertical tab bar.
 
 # Install
 
-## Install extension Sidebery
+## Install tree-style tab extension
 
 Click [here](https://addons.mozilla.org/en-US/firefox/addon/sidebery/) to install the Sidebery extension.
+
+Of course, if you prefer other tree-style tabs, such as [Tree Style Tab](https://addons.mozilla.org/en-US/firefox/addon/tree-style-tab/), you can install them yourself. The project does not mandate the use of Sidebery.
+
+The default tab bar is hidden. If you want to enable it, comment out '@import url("css/SideBarFox/sidebar.css");' in `chrome/css/userChrome.css`.
 
 ## Setting up config.js from "program" folder
 
