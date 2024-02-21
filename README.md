@@ -14,7 +14,9 @@ This repository contains a set of scripts and configuration files that can be us
 
 # Install
 
-## 安装扩展 Sidebery
+## Install extension Sidebery
+
+Click [here](https://addons.mozilla.org/en-US/firefox/addon/sidebery/) to install the Sidebery extension.
 
 ## Setting up config.js from "program" folder
 
