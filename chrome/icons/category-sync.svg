@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <style>.cls-1{fill:url(#linear-gradient);}.cls-2{fill:#ff0117;}.cls-3{fill:#fff;}.cls-4{fill:#ffa82d;}</style>
+    <bx:guide x="4.505" y="12.293" angle="90"/>
+    <bx:guide x="23.492" y="50.056" angle="90"/>
+    <bx:guide x="9.625" y="-10.531" angle="0"/>
+    <bx:guide x="54.854" y="-2.424" angle="0"/>
+  </defs>
+  <title/>
+  <g data-name="16-weibo" id="_16-weibo">
+    <rect class="cls-1" height="64" rx="11.2" ry="11.2" width="64" style="fill: rgb(255, 163, 30);"/>
+  </g>
+  <path fill-rule="evenodd" d="M 16.702 27.045 L 9.157 25.939 L 24.152 12.293 L 29.613 30.613 L 22.89 28.547 C 21.202 34.856 21.604 41.532 29.126 48.847 C 23.506 47.341 12.524 43.266 16.702 27.045 Z" style="fill: rgb(255, 255, 255);"/>
+  <path fill-rule="evenodd" d="M 41.638 27.045 L 34.093 25.939 L 49.088 12.293 L 54.549 30.613 L 47.826 28.547 C 46.138 34.856 46.54 41.532 54.062 48.847 C 48.442 47.341 37.46 43.266 41.638 27.045 Z" style="fill: rgb(255, 255, 255);" transform="matrix(-1, 0, 0, -1, 88.641998, 61.140001)"/>
+</svg>

@@ -1,0 +1,325 @@
+/*@name         RunningCheese Firefox
+  @author       RunningCheese
+  @homepage     https://www.runningcheese.com
+  @version      2022-05-05 
+  @version      2021-09-20 
+*/
+
+
+/* ========================================= 呼出菜单 ========================================== */
+
+/* 参考代码 source from: https://github.com/bmFtZQ/Edge-FrFox */
+
+:root {
+    --panel-separator-margin-2: 5px !important;
+    --panel-subview-body-padding: 6px 0 !important;
+    --panel-separator-margin: var(--panel-separator-margin-2) 0 !important;
+    --arrowpanel-background: Field !important;
+    --arrowpanel-background: light-dark(#fff, #4A4A4A) !important;
+    --arrowpanel-color: light-dark(#1c1c1c, #fff) !important;
+    --arrowpanel-dimmed: color-mix(in srgb, currentColor 17%, transparent) !important;
+    --arrowpanel-dimmed-further: color-mix(in srgb, currentColor 30%, transparent) !important;
+}
+
+menupopup,
+menupopup menuitem,
+menupopup menu,
+menupopup menuseparator,
+panel {
+    -moz-appearance: none !important;
+    min-width: 150px !important;
+}
+
+
+menupopup,
+panel {
+    --menu-border-radius: 6px;
+    --menu-border: 0;
+    --menu-shadow: 0 1px 2px 1px rgba(0, 0, 0, .1),
+    0 1px 5px -3px rgba(0, 0, 0, .1),
+    0 6px 10px 1px rgba(0, 0, 0, .1),
+    0 4px 12px 2px rgba(0, 0, 0, .1);
+}
+
+
+menupopup,
+panel[type="autocomplete-richlistbox"],
+menulist > menupopup > menucaption {
+    -moz-window-shadow: none !important;
+    background: 0 !important;
+    border: 0 !important;
+    color: var(--arrowpanel-color) !important;
+    box-sizing: content-box !important;
+}
+
+menucaption {
+    padding-inline: 20px !important;
+}
+
+menupopup {
+    padding: 11px 14px 18px !important;
+    margin: -19px -14px 0 !important;
+}
+
+
+/* needs to align with textbox/bookmark-button but can't overlap it */
+panel[type="autocomplete-richlistbox"],
+.bookmark-item:not(menu) > menupopup[placespopup] {
+    padding: 1px 14px 18px !important;
+    margin: 0 -14px 0 !important;
+}
+
+.panel-arrowcontent {
+    background: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    font: -moz-pull-down-menu !important;
+    border: 0 !important;
+}
+
+
+.popup-internal-box,
+#PopupSearchAutoComplete > *,
+.menupopup-arrowscrollbox {
+    background: var(--arrowpanel-background) !important;
+}
+
+
+/*深色模式菜单背景颜色*/
+@media (prefers-color-scheme: dark) {
+    panel[type="autocomplete-richlistbox"],
+    .menupopup-arrowscrollbox {
+        background-color: #353d49 !important;
+        padding: 4px 0px !important;
+    }
+}
+
+.menupopup-arrowscrollbox {
+    border-radius: 6px !important;
+}
+
+
+/* themes a menupopup (or other root level / shadow dom popup) as a panel */
+/* Mozilla's use of shadow dom means we can't use a menupopup > .popup-internal-box */
+.popup-internal-box,
+panel[type="autocomplete-richlistbox"] > .autocomplete-richlistbox,
+.menupopup-arrowscrollbox {
+    margin: 0 !important;
+    padding: 4px 0 !important;
+    border-radius: var(--menu-border-radius) !important;
+    color: inherit !important;
+}
+
+.popup-internal-box,
+.menupopup-arrowscrollbox {
+    box-shadow: var(--menu-shadow) !important;
+    border: var(--menu-border) !important;
+}
+
+#PopupSearchAutoComplete > * {
+    border-radius: 0 !important;
+}
+
+#PopupSearchAutoComplete > :first-child {
+    border-radius: 4px 4px 0 0 !important;
+}
+
+#PopupSearchAutoComplete > :last-child {
+    border-radius: 0 0 4px 4px !important;
+}
+
+
+/* autocomplete panel can't overlap the textbox, so shadow can't go up
+   more than 1px */
+panel[type="autocomplete-richlistbox"] > .autocomplete-richlistbox {
+    box-shadow: var(--menu-shadow) !important;
+    border: var(--menu-border) !important
+}
+
+/* search panel gets special treatment; it has multiple children */
+#PopupSearchAutoComplete > .autocomplete-richlistbox {
+    box-shadow: none !important;
+}
+
+#PopupSearchAutoComplete {
+    filter: drop-shadow(0 8px 6px rgba(0, 0, 0, .25)) drop-shadow(0 1px 1px rgba(0, 0, 0, .125)) !important;
+}
+
+/* reset non-layout props when embedded in a panel
+   (panel handles panel theming in this case) */
+.panel-arrowcontent > .popup-internal-box {
+    background: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+/* shotgun approach to undo this selector...
+   #BMB_bookmarksPopup menupopup[placespopup="true"]:-moz-lwtheme::part(innerbox)
+   ...without being able to use ::part() in userChrome.css */
+[part="innerbox"] {
+    /* this could cause side effects elsewhere */
+    box-shadow: none !important;
+    margin: 0 !important;
+}
+
+menupopup menuseparator {
+    margin: 4px 0 !important;
+    padding: 0 !important;
+    height: 1px !important;
+    background: none !important;
+    border-top: 1px solid currentColor !important;
+    opacity: .15 !important;
+}
+
+
+menupopup menuitem,
+menupopup menu,
+.autocomplete-richlistitem {
+    min-height: 30px !important;
+    padding: 0 12px !important;
+    border: 0 !important;
+    color: inherit !important;
+    fill-opacity: initial !important;
+}
+
+.autocomplete-richlistitem[selected] {
+    color: #ffffff !important;
+}
+
+
+menupopup menu[_moz-menuactive=true],
+menupopup menuitem[_moz-menuactive=true],
+menupopup menuitem:hover:not([disabled=true]),
+menupopup menu:hover:not([disabled=true]),
+.autocomplete-richlistitem:hover:not([disabled=true]):not([selected=true]) {
+    background-color: var(--arrowpanel-dimmed) !important;
+}
+
+
+menulist > menupopup > menuitem:is([checked="true"], [selected="true"])::before,
+menupopup > menuitem::before,
+menupopup > menuitem::after {
+    display: none !important;
+}
+
+
+/* disable vertical menu scroll buttons and use a good ol' scrollbar */
+/* this is a shotgun approach, expect side effects */
+scrollbox[orient=vertical]
+
+    /* >=71 */
+{
+    overflow-y: auto !important;
+}
+
+
+/* this is a bit depressing... */
+/* work around lack of ::part selector support */
+:root {
+    --scrollbutton-display: -moz-box !important;
+}
+
+/* hide ancient-looking scrollbuttons in menupopups */
+/* add other selectors here to disable more scrollbuttons */
+
+/*menupopup {
+  --scrollbutton-display: none !important;
+} */
+
+/* 
+#scrollbutton-up[part],
+#scrollbutton-down[part] {
+  display: var(--scrollbutton-display) !important;
+}
+*/
+
+.menuitem-iconic,
+.menu-iconic-icon
+
+    /* .menu-iconic-icons not necessarily within a .menuitem-iconic (don't ask me why...) */
+{
+    fill: currentColor !important;
+    -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity !important;
+}
+
+.menuitem-iconic[class*="identity-color"] .menu-iconic-icon {
+    fill: var(--identity-icon-color) !important;
+}
+
+.menu-iconic-left:not(#context-navigation .menu-iconic-left) {
+    -moz-appearance: none !important;
+    margin-inline: -4px 0 !important;
+    padding: 0 !important;
+}
+
+
+.menu-iconic-icon {
+    margin-inline-start: 0 !important;
+    margin-inline-end: 6px !important;
+    width: 24px !important;
+    height: 24px !important;
+    padding: 4px !important;
+}
+
+
+/* 勾选菜单位置设置 */
+
+/* :not(menu, #ContentSelectDropdown, #context-navigation) > menupopup > menuitem[type="checkbox"]
+{margin-left:-21px !important;}*/
+
+menulist > menupopup > menuitem::after,
+menulist > menupopup > menuitem::before {
+    content: '' !important;
+    margin-left: -8px !important;
+}
+
+menucaption > .menu-iconic-left {
+    display: none !important;
+}
+
+.menu-text,
+.menu-iconic-text {
+    -moz-appearance: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.menu-right {
+    -moz-appearance: none !important;
+    -moz-context-properties: fill !important;
+    fill: currentColor !important;
+    list-style-image: url(../icons/menu-right.svg) !important;
+    margin-inline-end: 0 !important;
+    margin-inline-start: 16px !important;
+    height: 16px !important;
+}
+
+
+menuitem[type="checkbox"] > .menu-iconic-left > .menu-iconic-icon,
+menuitem[checked="true"] > .menu-iconic-left > .menu-iconic-icon,
+menuitem[type="radio"] > .menu-iconic-left > .menu-iconic-icon,
+menuitem[selected="true"] > .menu-iconic-left > .menu-iconic-icon {
+    display: -moz-box !important;
+    padding: 4px !important;
+}
+
+
+menuitem[type="radio"] > .menu-iconic-left > .menu-iconic-icon,
+menuitem[type="radio"] > .menu-iconic-left > .menu-iconic-icon {
+    margin-left: -27px !important;
+}
+
+
+menuitem[checked="true"] > .menu-iconic-left > .menu-iconic-icon,
+menuitem[selected="true"] > .menu-iconic-left > .menu-iconic-icon {
+    /* checkmark is 18px, not 16px, hence reduced padding */
+    list-style-image: url(chrome://global/skin/icons/check.svg) !important;
+
+}
+
+
+menulist > menupopup > menuitem[checked="true"]::before,
+menulist > menupopup > menuitem[selected="true"]::before {
+    display: none !important;
+}
+

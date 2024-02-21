@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <style>.cls-1{fill:url(#linear-gradient);}.cls-2{fill:#ff0117;}.cls-3{fill:#fff;}.cls-4{fill:#ffa82d;}</style>
+    <bx:guide x="4.505" y="12.293" angle="90"/>
+    <bx:guide x="23.492" y="50.056" angle="90"/>
+    <bx:guide x="9.625" y="-10.531" angle="0"/>
+    <bx:guide x="54.854" y="-2.424" angle="0"/>
+  </defs>
+  <title/>
+  <g data-name="16-weibo" id="_16-weibo">
+    <rect class="cls-1" height="64" rx="11.2" ry="11.2" width="64" style="fill: rgb(230, 64, 50);"/>
+  </g>
+  <path fill-rule="evenodd" fill="rgb(255, 255, 255)" d="M 33.931 41.794 C 32.644 41.15 31.356 41.15 30.069 41.794 C 27.494 44.368 12.047 46.943 12.047 22.484 C 22.345 23.128 27.494 17.979 31.356 22.484 C 33.931 25.487 34.36 25.487 32.644 22.484 C 36.506 17.979 41.655 23.128 51.953 22.484 C 51.953 46.943 36.506 44.368 33.931 41.794 Z" style=""/>
+  <path fill-rule="evenodd" d="M 34.374 34.443 C 35.017 24.145 41.454 29.294 45.316 28.007 C 42.098 37.018 39.523 34.443 34.374 34.443 Z M 18.004 28.007 C 21.866 29.294 28.303 24.145 28.946 34.443 C 23.797 34.443 21.223 37.018 18.004 28.007 Z" style="fill: rgb(230, 64, 50);"/>
+</svg>

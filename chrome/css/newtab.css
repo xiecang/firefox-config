@@ -1,0 +1,82 @@
+/*@name         RunningCheese Firefox
+  @author       RunningCheese
+  @homepage     https://www.runningcheese.com
+  @version      2021-07-22
+  @version      2020-09-24
+  @version      2020-07-04
+  @version      2019-09-22
+  @version      2019-05-23 
+  @version      2018-12-25   
+*/
+
+
+/* ===================================== 背景美化 ===================================== */
+
+@-moz-document url-prefix(about:newtab), url-prefix(about:home) {
+
+    /*隐藏部分内容*/
+    .icon.icon-pin-small {
+        display: none !important;
+    }
+
+
+    /*背景图片*/
+    body {
+        /* 必应壁纸地址：https://area.sinaapp.com/bingImg/ */ /*注意：Img后面的 / 不要少*/
+        /*https://www.caojiefeng.com/api/bing/1920.php 也可*/
+        /*https://api.dujin.org/bing/1920.php 也可*/
+        background-image: url("https://api.xiecang.cc/v1/bing") !important;
+        /*--uc-newTab-wallpaper: url("https://api.xiecang.cc/v1/bing") !important;*/
+        background-size: cover !important;
+        background-position: center !important;
+    }
+
+
+    .top-site-outer:is(.active, :focus, :hover) {
+        background: rgba(0, 0, 0, 0.1) !important;
+    }
+
+    body[lwt-newtab-brighttext] .top-site-outer:is(.active, :focus, :hover) {
+        background: rgba(180, 180, 180, 0.1) !important;
+    }
+
+
+    /*文字添加阴影*/
+    body[lwt-newtab-darktext] .title {
+        color: black !important;
+        font-weight: 400 !important;
+        text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5) !important;
+    }
+
+    body[lwt-newtab-brighttext] .title {
+        color: white !important;
+        font-weight: 400 !important;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8) !important;
+    }
+
+
+    /*图标圆角*/
+    .top-site-outer .tile .icon-wrapper,
+    .top-site-outer .tile,
+    .rich-icon,
+    .icon-wrapper {
+        border-radius: 26% !important;
+        opacity: 1 !important;
+        width: 76px !important;
+        height: 76px !important;
+    }
+
+
+    /*搜索框距离调整*/
+    .outer-wrapper.newtab-experience .search-wrapper {
+        padding-bottom: 25px !important;
+        margin-top: -40px !important;
+    }
+
+
+    /*自动字体上移*/
+    .top-site-outer .tile .icon-wrapper.letter-fallback::before {
+        top: 0px !important; /* Original: 6px */
+    }
+}
+

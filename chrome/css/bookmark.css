@@ -1,0 +1,191 @@
+/*@name         RunningCheese Firefox
+  @author       RunningCheese
+  @homepage     https://www.runningcheese.com
+  @version      2021-07-22
+  @version      2020-09-24
+  @version      2019-05-23 
+  @version      2018-04-08       
+*/
+
+
+/* ===================================== 书签菜单调整 ===================================== */
+
+
+/*书签栏工具栏图标 PersonalToolbar Bookmark Folder Icon*/
+
+/*
+#PersonalToolbar toolbarbutton[class="bookmark-item"][type="menu"],
+menu[container="true"][class="menu-iconic bookmark-item"] {
+  list-style-image: url(../icons/bookmark.svg)!important;
+}
+
+menu[container="true"][class="menu-iconic bookmark-item"]:hover {
+  list-style-image: url(../icons/bookmark_inverted.svg)!important;
+}
+
+:-moz-lwtheme-brighttext#PersonalToolbar toolbarbutton[class="bookmark-item"][type="menu"],
+menu[container="true"][class="menu-iconic bookmark-item"]:-moz-lwtheme-brighttext{
+	list-style-image: url(../icons/bookmark_inverted.svg)!important;
+}
+*/
+
+
+/*添加书签选项中隐藏预览*/
+[id="placesContext_sortBy:name"],
+#editBookmarkHeaderSeparator,
+#editBookmarkPanelFavicon[src], #editBookmarkPanelImage {
+    display: none !important;
+}
+
+/*书签字体大小*/
+#PersonalToolbar {
+    font-size: 13px !important;
+}
+
+#PlacesToolbarItems[placespopup="true"].bookmark-item {
+    font-size: 13px !important;
+}
+
+
+/*书签最小宽度*/
+#placesContext,
+.bookmark-item .menuitem-with-favicon {
+    min-width: 180px !important;
+}
+
+
+/*书签栏工具栏图标上下距离*/
+/*#PlacesToolbarItems .bookmark-item, #OtherBookmarks{
+  margin-top:-2px !important;}
+*/
+
+
+/*书签工具栏居中 PersonalToolbar Align Center */
+#PersonalToolbar #PlacesToolbarItems {
+    justify-content: center !important;
+}
+
+
+/*深色模式下菜单字体减淡*/
+:-moz-lwtheme-brighttext#PlacesToolbarItems {
+    opacity: 0.9 !important;
+}
+
+:-moz-lwtheme-brighttext#PlacesToolbarItems:hover {
+    opacity: 1 !important;
+}
+
+
+/*书签排序*/
+#placesContext_open,
+[label="新建标签页打开"],
+#placesContext_openSeparator,
+[id="placesContext_open:newcontainertab"],
+[id="placesContext_openBookmarkLinks:tabs"],
+[id="placesContext_openBookmarkContainer:tabs"],
+#_bc21b9a1-3ad6-4b00-bca4-ef5b7e21253b_-menuitem-_BTH {
+    -moz-box-ordinal-group: 0 !important;
+}
+
+
+/*书签添加符号*/
+#_bc21b9a1-3ad6-4b00-bca4-ef5b7e21253b_-menuitem-_BTH:after {
+    content: "添加 +";
+}
+
+#_bc21b9a1-3ad6-4b00-bca4-ef5b7e21253b_-menuitem-_BTH .menu-iconic-text {
+    display: none !important;
+}
+
+#_bc21b9a1-3ad6-4b00-bca4-ef5b7e21253b_-menuitem-_BTH .menu-iconic-left {
+    display: none !important;
+}
+
+
+#placesContext_deleteBookmark .menu-text {
+    visibility: hidden;
+    position: relative;
+}
+
+#placesContext_deleteBookmark :after {
+    content: "删除 ×";
+    visibility: visible;
+    position: absolute;
+}
+
+
+[label="编辑书签…"] .menu-text {
+    visibility: hidden;
+    position: relative;
+}
+
+[label="编辑书签…"] :after {
+    content: "编辑 ⦁";
+    visibility: visible;
+    position: absolute;
+}
+
+
+[label="新建标签页打开"] .menu-text {
+    visibility: hidden;
+    position: relative;
+}
+
+[label="新建标签页打开"] :after {
+    content: "新标签页打开";
+    visibility: visible;
+    position: absolute;
+}
+
+
+[id="placesContext_show_folder:info"] .menu-text {
+    visibility: hidden;
+    position: relative;
+}
+
+[id="placesContext_show_folder:info"] :after {
+    content: "编辑 ⦁";
+    visibility: visible;
+    position: absolute;
+}
+
+
+#placesContext_deleteFolder .menu-text {
+    visibility: hidden;
+    position: relative;
+}
+
+#placesContext_deleteFolder :after {
+    content: "删除 ×";
+    visibility: visible;
+    position: absolute;
+}
+
+
+/*菜单文字位置调整*/
+#_bc21b9a1-3ad6-4b00-bca4-ef5b7e21253b_-menuitem-_BTH:after,
+#context-openlinkintab:after,
+#placesContext_deleteBookmark:after,
+[id="placesContext_show_folder:info"]:after,
+[label="编辑书签…"]:after,
+[label="新建标签页打开"]:after,
+#placesContext_deleteFolder:after {
+    margin-left: -11px !important;
+}
+
+
+menu .openintabs-menuitem .menu-text {
+    margin-left: 26px !important;
+}
+
+
+/*小书签栏黑夜模式图标颜色反向*/
+@media (prefers-color-scheme: dark) {
+    #PersonalToolbar [label="小书签栏"] .menuitem-iconic .menu-iconic-left {
+        filter: invert(1);
+    !important;
+    }
+}
+
+
+

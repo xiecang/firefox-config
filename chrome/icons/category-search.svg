@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <style>.cls-1{fill:url(#linear-gradient);}.cls-2{fill:#ff0117;}.cls-3{fill:#fff;}.cls-4{fill:#ffa82d;}</style>
+    <bx:guide x="4.505" y="12.293" angle="90"/>
+    <bx:guide x="23.492" y="50.056" angle="90"/>
+    <bx:guide x="9.625" y="-10.531" angle="0"/>
+    <bx:guide x="54.854" y="-2.424" angle="0"/>
+  </defs>
+  <title/>
+  <g data-name="16-weibo" id="_16-weibo">
+    <rect class="cls-1" height="64" rx="11.2" ry="11.2" width="64" style="fill: rgb(47, 138, 246);"/>
+  </g>
+  <path d="M 41.473 39.192 L 48.38 46.098 L 46.098 48.38 L 39.192 41.473 C 36.623 43.534 33.427 44.653 30.134 44.648 C 22.123 44.648 15.62 38.146 15.62 30.134 C 15.62 22.123 22.123 15.62 30.134 15.62 C 38.146 15.62 44.648 22.123 44.648 30.134 C 44.653 33.427 43.532 36.623 41.473 39.192 Z" style="fill: rgb(255, 255, 255);"/>
+</svg>

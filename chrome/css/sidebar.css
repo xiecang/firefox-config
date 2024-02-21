@@ -1,0 +1,55 @@
+/* ===================================== 侧边栏 ===================================== */
+
+/*标题栏大小调整*/
+.sidebar-header, #sidebar-header {
+    font-size: 1.0em !important;
+    padding: 2px !important;
+}
+
+#sidebar-box, #sidebar {
+    overflow: hidden !important;
+    max-width: 1200px !important;
+    min-width: 5px !important;
+}
+
+
+/*侧边栏增加图标*/
+
+#identity-popup-more-info {
+    list-style-image: url("chrome://global/skin/icons/info.svg");
+}
+
+#sidebar-switcher-bookmarks {
+    list-style-image: url("chrome://browser/skin/bookmark-hollow.svg");
+}
+
+#sidebar-switcher-history {
+    list-style-image: url("chrome://browser/skin/history.svg");
+}
+
+#sidebar-switcher-tabs {
+    list-style-image: url("chrome://browser/skin/tab.svg");
+}
+
+#sidebar-reverse-position {
+    list-style-image: url("chrome://browser/skin/sidebars-right.svg");
+}
+
+#sidebar-box[positionend="true"] #sidebar-reverse-position {
+    list-style-image: url("chrome://browser/skin/sidebars.svg");
+}
+
+#sidebarMenu-popup > .subviewbutton[data-l10n-id="sidebar-menu-close"] {
+    list-style-image: url("chrome://global/skin/icons/close.svg");
+}
+
+#sidebarMenu-popup .toolbarbutton-text {
+    margin-left: 4px !important;
+}
+
+
+
+
+
+
+
