@@ -1,20 +1,20 @@
 /** Import Lepton stylesheet (Chrome) *****************************************/
 @import url("css/leptonChrome.css");
-@import url("css/popup.css");
+/*@import url("css/popup.css");*/
 @import url("css/tabbar.css");
 @import url("css/sidebar.css");
 @import url("css/menu.css");
 @import url(./css/bookmark.css);
-
-/* https://github.com/stonecrusher/simpleMenuWizard 菜单向导，如果需要删除东西可能有用 */
 
 /* some edge things */
 /* https://github.com/bmFtZQ/edge-frfox */
 @import url("css/edge-frfox/content/common.css");
 /*@import url("css/edge-frfox/content/newtab.css");*/
 /*@import url("css/edge-frfox/icons/icons.css");*/
-/*@import url("css/edge-frfox/global/colors.css");*/
-/*@import url("css/edge-frfox/global/popup.css");*/
+@import url("css/edge-frfox/global/colors.css");
+/*@import url("css/edge-frfox/global/browser.css");*/
+/*@import url("css/edge-frfox/global/tree.css");*/
+@import url("css/edge-frfox/global/popup.css");
 /*@import url("css/edge-frfox/global/tweaks.css");*/
 @import url("css/edge-frfox/toolbar/findbar.css");
 @import url("css/edge-frfox/toolbar/navbar.css");
