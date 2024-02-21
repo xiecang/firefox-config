@@ -2,6 +2,8 @@
 
 This repository contains a set of scripts and configuration files that can be used to modify the behavior of Firefox.
 
+**Be aware that updates to Firefox may result in some icon styles or scripts becoming incompatible. This configuration is only tailored to the latest stable version of Firefox, and has currently been tested and verified on version 123.0.**
+
 # Overview
 
 ![Overview1](https://raw.githubusercontent.com/xiecang/firefox-config/master/images/overview_1.png)
@@ -51,7 +53,10 @@ Copy `defaults/` and `config.js` to `/Applications/Firefox.app/Contents/Resource
 
 ## Setting up profile
 
-In your browser, type `about:profiles`. Locate the item where `Default Profile` is set to yes. Click Open Directory and copy both `user.js` and `chrome` into that directory.
+0. In your browser, type `about:profiles`.
+1. Locate the item where `Default Profile` is set to yes.
+2. Click on `Show in Finder` in the `Root Directory` column.
+3. Copy both `user.js` and `chrome` into that directory.
 
 ![about:profiles](https://raw.githubusercontent.com/xiecang/firefox-config/master/images/about_profiles.png)
 
