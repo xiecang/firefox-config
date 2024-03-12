@@ -1,26 +1,28 @@
 /** Import Lepton stylesheet (Chrome) *****************************************/
 @import url("css/leptonChrome.css");
+
+/* some edge things */
+/* https://github.com/bmFtZQ/edge-frfox */
+/*@import url("css/edge-frfox/icons/icons.css");*/
+/*@import url("css/edge-frfox/toolbar/tabbar.css");*/
+@import url("css/edge-frfox/toolbar/navbar.css");
+@import url("css/edge-frfox/toolbar/personalbar.css");
+@import url("css/edge-frfox/toolbar/findbar.css");
+@import url("css/edge-frfox/toolbar/urlbar.css");
+@import url("css/edge-frfox/global/colors.css");
+@import url("css/edge-frfox/global/popup.css");
+/*@import url("css/edge-frfox/global/browser.css");*/
+/*@import url("css/edge-frfox/global/tree.css");*/
+@import url("css/edge-frfox/global/tweaks.css") (-moz-bool-pref: "uc.tweak.hide-tabs-bar");
+@import url("css/edge-frfox/tweaks/hide-tabs-bar.css");
+
+@import url("css/edge-frfox/content/common.css");
+
+/* sidebar if you want to use */
+/*@import url("css/SideBarFox/sidebar.css");*/
+
 /*@import url("css/popup.css");*/
 @import url("css/tabbar.css");
 @import url("css/sidebar.css");
 @import url("css/menu.css");
 @import url(./css/bookmark.css);
-
-/* some edge things */
-/* https://github.com/bmFtZQ/edge-frfox */
-@import url("css/edge-frfox/content/common.css");
-/*@import url("css/edge-frfox/content/newtab.css");*/
-/*@import url("css/edge-frfox/icons/icons.css");*/
-@import url("css/edge-frfox/global/colors.css");
-/*@import url("css/edge-frfox/global/browser.css");*/
-/*@import url("css/edge-frfox/global/tree.css");*/
-@import url("css/edge-frfox/global/popup.css");
-/*@import url("css/edge-frfox/global/tweaks.css");*/
-@import url("css/edge-frfox/toolbar/findbar.css");
-@import url("css/edge-frfox/toolbar/navbar.css");
-/*@import url("css/edge-frfox/toolbar/tabbar.css");*/
-@import url("css/edge-frfox/toolbar/urlbar.css");
-
-/* sidebar if you want to use */
-@import url("css/SideBarFox/sidebar.css");
-/*@import url("css/SideBarFox/autohide.css");*/
