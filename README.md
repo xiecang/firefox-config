@@ -2,7 +2,7 @@
 
 This repository contains a set of scripts and configuration files that can be used to modify the behavior of Firefox.
 
-**Be aware that updates to Firefox may result in some icon styles or scripts becoming incompatible. This configuration is only tailored to the latest stable version of Firefox, and has currently been tested and verified on version 123.0.1**
+**Be aware that updates to Firefox may result in some icon styles or scripts becoming incompatible. This configuration is only tailored to the latest stable version of Firefox, and has currently been tested and verified on version 125.0.1**
 
 # Overview
 

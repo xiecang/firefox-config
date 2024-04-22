@@ -476,6 +476,16 @@ menuitem[anonid="paste-and-go"] {
     list-style-image: url(../icons/translate.svg);
 }
 
+#appMenu-report-broken-site-button,
+#appMenu_help_reportSiteIssue {
+    display: none !important;
+}
+
+#appMenu-report-broken-site-button,
+#appMenu_help_reportSiteIssue {
+    list-style-image: url("chrome://global/skin/icons/lightbulb.svg");
+}
+
 #appMenu-zoom-controls::before {
     content: url(../icons/screenshot.svg);
 }
@@ -990,6 +1000,11 @@ menupopup menu:not([type="checkbox"]) {
     --menuitem-image: url(../icons/video.svg);
 }
 
+#use-relay-mask {
+    --menuitem-image: url("../icons/relay-logo.svg");
+}
+
+
 /* 画中画图标调整 */
 #context-video-pictureinpicture { /* checkbox */
     /* --menuitem-image: url(chrome://global/skin/media/picture-in-picture-open.svg); */
@@ -1245,7 +1260,7 @@ menupopup menu:not([type="checkbox"]) {
 }
 
 #sidebar-reverse-position:is(menuitem) {
-    --menuitem-image: url("chrome://browser/skin/tab.svg") !important;
+    --menuitem-image: url("../icons/arrow-swap.svg") !important;
 }
 
 #sidebarMenu-popup > *:is(menuitem)[data-l10n-id="sidebar-menu-close"] {
@@ -1257,7 +1272,9 @@ menupopup menu:not([type="checkbox"]) {
 
 /*恢复关闭标签页菜单图标反转*/
 @media (prefers-color-scheme: dark) {
-    #_72d92df5-2aa0-4b06-b807-aa21767545cd_-menuitem-_save-in-_-_-root .menu-iconic-left,
+    #glitterdrag_ililu-BAP .toolbarbutton-badge-stack .toolbarbutton-icon,
+    #_4d7a31cf-6ff2-4302-af10-6278f5c65462_-menuitem-_add-to-sidebar-note .menu-iconic-left,
+    #_72d92df5-2aa0-4b06-b807-aa21767545cd_-menuitem-_save-in-root .menu-iconic-left,
     #_4853d046-c5a3-436b-bc36-220fd935ee1d_-menuitem-_RootMenu [src*=".svg"] {
         filter: invert(1);
     !important;
@@ -1297,8 +1314,15 @@ menupopup menu:not([type="checkbox"]) {
     margin-left: -1px !important;
 }
 
+#allTabsMenu-allTabsView {
+    max-width: 350px !important;
+}
 
 /*拓展管理器图标大小*/
+#unified-extensions-manage-extensions {
+    list-style-image: url("chrome://mozapps/skin/extensions/extension.svg");
+}
+
 #unified-extensions-panel .unified-extensions-item .toolbarbutton-icon,
 #unified-extensions-panel .unified-extensions-list .unified-extensions-item-icon {
     height: 16px !important;
@@ -1308,7 +1332,6 @@ menupopup menu:not([type="checkbox"]) {
 #unified-extensions-panel .unified-extensions-item-menu-button {
     height: 28px !important;
 }
-
 
 #unified-extensions-view {
     /*min-height: 500px;*/
@@ -1320,7 +1343,7 @@ menupopup menu:not([type="checkbox"]) {
 }
 
 #unified-extensions-panel .panel-subview-footer-button .toolbarbutton-text {
-    margin-left: 9px !important;
+    margin-left: 7px !important;
 }
 
 #unified-extensions-panel .unified-extensions-item-action-button {
@@ -1330,4 +1353,6 @@ menupopup menu:not([type="checkbox"]) {
 #unified-extensions-panel .unified-extensions-item-message {
     display: none !important;
 }
+
+
 

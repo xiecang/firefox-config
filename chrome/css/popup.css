@@ -1,6 +1,7 @@
 /*@name         RunningCheese Firefox
   @author       RunningCheese
   @homepage     https://www.runningcheese.com
+  @version      2024-04-20 
   @version      2022-05-05 
   @version      2021-09-20 
 */
@@ -15,7 +16,7 @@
     --panel-subview-body-padding: 6px 0 !important;
     --panel-separator-margin: var(--panel-separator-margin-2) 0 !important;
     --arrowpanel-background: Field !important;
-    --arrowpanel-background: light-dark(#fff, #4A4A4A) !important;
+    --arrowpanel-background: light-dark(#fff, #353d49) !important;
     --arrowpanel-color: light-dark(#1c1c1c, #fff) !important;
     --arrowpanel-dimmed: color-mix(in srgb, currentColor 17%, transparent) !important;
     --arrowpanel-dimmed-further: color-mix(in srgb, currentColor 30%, transparent) !important;
@@ -50,6 +51,7 @@ menulist > menupopup > menucaption {
     border: 0 !important;
     color: var(--arrowpanel-color) !important;
     box-sizing: content-box !important;
+    color: inherit !important;
 }
 
 menucaption {
@@ -202,6 +204,11 @@ menupopup > menuitem::after {
     display: none !important;
 }
 
+/* Firefox Relay */
+#PopupAutoComplete > richlistbox > richlistitem > .two-line-wrapper {
+    margin-left: -27px !important;
+}
+
 
 /* disable vertical menu scroll buttons and use a good ol' scrollbar */
 /* this is a shotgun approach, expect side effects */
@@ -277,6 +284,7 @@ menucaption > .menu-iconic-left {
     display: none !important;
 }
 
+
 .menu-text,
 .menu-iconic-text {
     -moz-appearance: none !important;
@@ -309,7 +317,6 @@ menuitem[type="radio"] > .menu-iconic-left > .menu-iconic-icon {
     margin-left: -27px !important;
 }
 
-
 menuitem[checked="true"] > .menu-iconic-left > .menu-iconic-icon,
 menuitem[selected="true"] > .menu-iconic-left > .menu-iconic-icon {
     /* checkmark is 18px, not 16px, hence reduced padding */
@@ -317,9 +324,22 @@ menuitem[selected="true"] > .menu-iconic-left > .menu-iconic-icon {
 
 }
 
-
 menulist > menupopup > menuitem[checked="true"]::before,
 menulist > menupopup > menuitem[selected="true"]::before {
     display: none !important;
 }
 
+
+/* 124 版本右键菜单修正 */
+
+menupopup[needsgutter] {
+    > menu,
+    > menuitem,
+    > menucaption {
+        padding-inline-start: 0;
+
+        &::before {
+            content: none !important;
+        }
+    }
+}

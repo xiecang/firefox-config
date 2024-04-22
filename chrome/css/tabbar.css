@@ -470,7 +470,8 @@
 
 :root:not(:-moz-lwtheme) {
     /* Fix for windows's system default theme. Using --toolbar-bgcolor fallback */
-    --tab-selected-bgcolor: unset !important; /* Original: rgb(255,255,255); */
+    --tab-selected-bgcolor: rgb(255, 255, 255);
+!important; /* Original: rgb(255,255,255); */
 }
 
 #tabbrowser-tabs:not([movingtab]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab > .tab-stack > .tab-background[selected="true"]:-moz-lwtheme {
