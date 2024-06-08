@@ -1,7 +1,7 @@
 /* ===================================== 侧边栏 ===================================== */
 
 /*标题栏大小调整*/
-.sidebar-header, #sidebar-header {
+#sidebar-box, #sidebar-header {
     font-size: 1.0em !important;
     padding: 2px !important;
 }
