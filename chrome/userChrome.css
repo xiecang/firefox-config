@@ -21,8 +21,8 @@
 /* sidebar if you want to use */
 /*@import url("css/SideBarFox/sidebar.css");*/
 
-/*@import url("css/popup.css");*/
-@import url("css/tabbar.css");
-@import url("css/sidebar.css");
-@import url("css/menu.css");
+@import url(./css/menu.css);
+/*@import url(./css/popup.css);*/
+@import url(./css/sidebar.css);
+/*@import url(./css/tabbar.css);*/
 @import url(./css/bookmark.css);

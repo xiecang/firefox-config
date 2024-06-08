@@ -456,7 +456,6 @@ pref("browser.safebrowsing.downloads.enabled", false);//解决下载卡在最后
 pref("browser.backspace_action", 1); //去除退格键使网页后退的功能，改成向上滚动页面。
 pref("gfx.webrender.all", true);//开启webrender
 //pref("gfx.direct2d.disabled",false); // 开启direct2d，用于硬件加速，默认即是false
-user_pref("widget.macos.native-context-menus", false);
 
 pref("datareporting.healthreport.uploadEnabled", false);//关闭安全检测健康中心
 //pref("datareporting.policy.dataSubmissionEnabled", false); //关闭安全检测健康中心
@@ -962,7 +961,7 @@ user_pref("security.OCSP.enabled", 1); // [DEFAULT: 1]
  * could have been revoked) and/or you could be under attack (e.g. malicious blocking of OCSP servers)
  * [1] https://blog.mozilla.org/security/2013/07/29/ocsp-stapling-in-firefox/
  * [2] https://www.imperialviolet.org/2014/04/19/revchecking.html ***/
-user_pref("security.OCSP.require", true);
+user_pref("security.OCSP.require", false);
 
 /** CERTS / HPKP (HTTP Public Key Pinning) ***/
 /* 1223: enable strict PKP (Public Key Pinning)

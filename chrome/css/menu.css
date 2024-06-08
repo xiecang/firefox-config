@@ -200,7 +200,7 @@ menuitem[anonid="paste-and-go"] {
 #context-sep-bidi,
 #context-bookmarkpage,
 #context-sep,
-#side-view_mozilla_org-menuitem-_open-in-sidebar,
+/*#side-view_mozilla_org-menuitem-_open-in-sidebar,*/
 #context-redo,
 #context-navigation,
 #context-sep-navigation,
@@ -211,7 +211,6 @@ menuitem[anonid="paste-and-go"] {
 #context-inspect-a11y,
 #tabContextMenu #_cd7e22de-2e34-40f0-aeff-cec824cbccac_-menuitem-_inmypocket-add-item,
 #tabContextMenu [id*="_cd7e22de-2e34-40f0-aeff-cec824cbccac_-menuitem-"],
-#side-view_mozilla_org-menuitem-_open-link-in-sidebar,
 #context-pocket,
 #context-savepage,
 #context-selectall,
@@ -289,7 +288,7 @@ menuitem[anonid="paste-and-go"] {
 
 /*隐藏书签右键菜单 Hide Bookmark Menu Option*/
 [id="placesContext_open:newwindow"],
-[id="placesContext_openContainer:tabs"],
+/*[id="placesContext_openContainer:tabs"],*/
 [id="placesContext_open:newprivatewindow"] {
     display: none;
 }
@@ -685,9 +684,9 @@ panelMenuBookmarkThisPage[starred] {
     list-style-image: url(chrome://global/skin/icons/undo.svg);
 }
 
-#allTabsMenu-containerTabsButton {
-    list-style-image: url(../icons/container-openin-16.svg);
-}
+/*#allTabsMenu-containerTabsButton {*/
+/*    list-style-image: url(../icons/container-openin-16.svg);*/
+/*}*/
 
 #allTabsMenu-hiddenTabsButton {
     list-style-image: url(../icons/password-hide.svg);
@@ -911,6 +910,7 @@ menupopup menu:not([type="checkbox"]) {
     --menuitem-image: url(../icons/link-square.svg);
 }
 
+menuitem[command="Browser:NewUserContextTab"][data-usercontextid="0"],
 #context-openlinkincontainertab {
     --menuitem-image: url(../icons/newtab.svg);
 }
@@ -1002,6 +1002,10 @@ menupopup menu:not([type="checkbox"]) {
 
 #use-relay-mask {
     --menuitem-image: url("../icons/relay-logo.svg");
+}
+
+menuitem[command="Browser:OpenAboutContainers"] {
+    --menuitem-image: url("../icons/setting2.svg");
 }
 
 

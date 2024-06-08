@@ -125,32 +125,5 @@ keys['Ctrl+Shift+Alt+C'] = function () {
 }//复制所有网页 Markdown 链接
 
 
-//Ctrl+Alt 组合键
-//--------------------------------------------------------------------------------------------------------------------------------------------
-
-//keys['Ctrl+Alt+A'] =  function() {var path ="..\\..\\Tools\\Snapshot.exe";	var file = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);file.initWithPath(path.replace(/^\./, Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties).get("ProfD", Components.interfaces.nsIFile).path));file.launch();};//截图
-
-//keys['Ctrl+Alt+Shift+A'] =  function() {window.minimize(); var path ="..\\..\\Tools\\Snapshot.exe";	var file = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);file.initWithPath(path.replace(/^\./, Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties).get("ProfD", Components.interfaces.nsIFile).path));file.launch();};//隐藏火狐截图
-
-//keys['Ctrl+Alt+Q'] =  function() {var path ="..\\..\\Tools\\FSCapture\\FSCapture.exe";	var file = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);file.initWithPath(path.replace(/^\./, Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties).get("ProfD", Components.interfaces.nsIFile).path));file.launch();};//完整截图
-
-//keys["Ctrl+Alt+S"]  = function() {var path ="..\\..\\Tools\\ScreenToGif.exe";	var file = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);file.initWithPath(path.replace(/^\./, Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties).get("ProfD", Components.interfaces.nsIFile).path));file.launch();};//GIF截图
-
-//keys['Ctrl+Alt+C'] =  function() { var path ="..\\..\\Tools\\Colors\\Colors.exe";	var file = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);file.initWithPath(path.replace(/^\./, Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties).get("ProfD", Components.interfaces.nsIFile).path));file.launch();};//颜色拾取器
-
-keys["Ctrl+Alt+X"] = function () {
-    var toolbar = document.getElementById("toolbar-menubar");
-    var visibility = toolbar.getAttribute("autohide") == "true";
-    setToolbarVisibility(toolbar, visibility);
-};//打开Alt菜单 ff70+
-
-
-//Ctrl+Shift 组合键
-//--------------------------------------------------------------------------------------------------------------------------------------------
-//keys['Ctrl+Shift+A'] = 原生快捷键：打开附加组件栏
-//keys['Ctrl+Shift+S'] = 原生快捷键：打开火狐自带的截图功能
-//keys['Ctrl+Shift+D'] = 原生快捷键：保存当前所有标签
-
-
 
 
