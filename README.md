@@ -4,6 +4,8 @@ This repository contains a set of scripts and configuration files that can be us
 
 **Be aware that updates to Firefox may result in some icon styles or scripts becoming incompatible. This configuration is only tailored to the latest stable version of Firefox, and has currently been tested and verified on version 126.0.1**
 
+**To make the tabs rainbow-colored 🌈, enable the Light theme in the settings section.**
+
 # Overview
 
 ![Overview1](https://raw.githubusercontent.com/xiecang/firefox-config/master/images/overview_1.png)
