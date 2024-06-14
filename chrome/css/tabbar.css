@@ -1,3 +1,65 @@
+
+/* ===================================== 标签栏调整 ===================================== */
+
+/*标签栏默认主题颜色*/
+/*@media (prefers-color-scheme: light) {*/
+/*    :root:is(:not([lwtheme]), :not(:-moz-lwtheme)) #navigator-toolbox{*/
+/*        --lwt-accent-color: #DEE1E5 !important;*/
+/*        --toolbar-bgcolor: #ffffff !important;*/
+/*        background-color: #DEE1E5 !important;*/
+/*    }*/
+/*}*/
+@media (prefers-color-scheme: dark) {
+    :root:is(:not([lwtheme]), :not(:-moz-lwtheme)) #navigator-toolbox{
+        --lwt-accent-color: #353d49 !important;
+        --toolbar-bgcolor: #465467 !important;
+        background-color: #353d49 !important;
+    }
+    :root:is(:not([lwtheme]), :not(:-moz-lwtheme)) #TabsToolbar #tabbrowser-tabs:not([noshadowfortests]) .tabbrowser-tab .tab-background:is([selected], [multiselected])  {
+        background: #465467 !important;
+    }
+    :root:is(:not([lwtheme]), :not(:-moz-lwtheme)) #urlbar-background {
+        background-color: #353d49 !important;
+    }
+}
+
+
+/*标签栏明亮主题颜色*/
+/*:root[style*="--lwt-accent-color: rgb(240, 240, 244); --lwt-text-color: rgba(21, 20, 26);"] #navigator-toolbox{*/
+/*    --lwt-accent-color: #eeeeee !important;*/
+/*    --toolbar-bgcolor: #ffffff !important;*/
+/*    background-color: #eeeeee !important;*/
+/*}*/
+
+
+/*标签栏深色主题颜色*/
+:root:is(:not([lwtheme]), :not(:-moz-lwtheme)) #sidebar-box,
+:root[style*="--lwt-accent-color: rgb(28, 27, 34); --lwt-text-color: rgba(251, 251, 254);"] #navigator-toolbox{
+    --lwt-accent-color: #353d49 !important;
+    --toolbar-bgcolor: #465467 !important;
+    background-color: #353d49 !important;
+}
+
+:root[style*="--lwt-accent-color: rgb(28, 27, 34); --lwt-text-color: rgba(251, 251, 254);"] #urlbar-background {
+    background-color: #353d49 !important;
+}
+
+:root[style*="--lwt-accent-color: rgb(28, 27, 34); --lwt-text-color: rgba(251, 251, 254);"] .toolbarbutton-1 {
+    --toolbarbutton-hover-background: #353d49 !important;
+    --toolbarbutton-active-background: #353d49 !important;
+}
+
+:root[style*="--lwt-accent-color: rgb(28, 27, 34); --lwt-text-color: rgba(251, 251, 254);"] #PlacesToolbarItems .bookmark-item:not([_moz-menuactive="true"]):hover {
+    background-color: #353d49 !important;
+}
+
+:root[style*="--lwt-accent-color: rgb(28, 27, 34); --lwt-text-color: rgba(251, 251, 254);"] #OtherBookmarks:hover {
+    background-color: #353d49 !important;
+}
+
+
+
+
 /* -------------------------- 彩虹标签页--------------------------- */
 
 /* 去除标签页阴影*/
@@ -24,7 +86,7 @@
 }
 
 :root:is(:not([lwtheme]), :not(:-moz-lwtheme)) .tab-background:is([selected], [multiselected]),
-:root[style*="--lwt-accent-color: rgb(240, 240, 244); --lwt-text-color: rgba(21, 20, 26);"] .tab-background:is([selected], 
+:root[style*="--lwt-accent-color: rgb(240, 240, 244); --lwt-text-color: rgba(21, 20, 26);"] .tab-background:is([selected],
 :root[style*="--lwt-accent-color: rgb(240, 240, 244); --lwt-text-color: rgba(21, 20, 26);"] [multiselected]) {
     border: 0px !important;
 }
@@ -159,3 +221,498 @@
     border-inline-start: none !important;
 }
 
+
+/* --固定标签页设置-- */
+
+:root {
+    --newtab-button-minus-width-padding: 2px;
+    --newtab-button-width-padding: calc(var(--toolbarbutton-inner-padding) - var(--newtab-button-minus-width-padding));
+}
+
+#new-tab-button    > .toolbarbutton-icon,
+#alltabs-button     > .toolbarbutton-badge-stack {
+    /* Original: calc(2 * var(--toolbarbutton-inner-padding) + 16px) */
+    width: calc(2 * var(--newtab-button-width-padding) + 16px) !important;
+    /* Original: --toolbarbutton-inner-padding */
+    padding-left: var(--newtab-button-width-padding) !important;
+    padding-right: var(--newtab-button-width-padding) !important;
+}
+
+#tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab[first-visible-unpinned-tab] {
+    margin-inline-start: 1px !important;
+}
+
+:root:not([uidensity=touch]) #tabbrowser-arrowscrollbox {
+    --scrollbtn-inner-padding: 1px;
+    --scrollbtn-outer-padding: 3px;
+}
+
+#scrollbutton-up {
+    padding-left: var(--scrollbtn-inner-padding, 4px) !important;
+    /* Original: 4px */
+    padding-right: var(--scrollbtn-outer-padding, 4px) !important;
+}
+
+#scrollbutton-down {
+    padding-left: var(--scrollbtn-outer-padding, 4px) !important;
+    /* Original: 4px */
+    padding-right: var(--scrollbtn-inner-padding, 4px) !important;
+}
+
+:root:not([uidensity=touch]) #new-tab-button, #alltabs-button {
+    --toolbarbutton-outer-padding: 1px;
+    /* Original: 2px*/
+}
+
+/* neighbouring tabs should "pinch" together */
+.tabbrowser-tab:not([first-visible-tab]) {
+    padding-inline: 1px !important;
+}
+.tabbrowser-tab:is([first-visible-tab]) {
+    padding-right:1px !important;
+}
+
+
+.tabbrowser-tab:not([last-visible-tab]) {
+    margin-inline-end: -.5px !important;
+}
+
+
+/** 去除标签与导航栏之间的空隙 Tab Bar - Connect to window ======================================================== */
+
+.tab-background {
+    border-radius: var(--tab-border-radius) var(--tab-border-radius) 0px 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.tab-content {
+    margin-top: var(--tab-block-margin);
+}
+
+.tab-stack {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+/* Remove line at Toolbar's top */
+#tabbrowser-tabs {
+    z-index: 1 !important;
+}
+#tabbrowser-arrowscrollbox[overflowing] .tabbrowser-tab[pinned]:is([visuallyselected], [multiselected]) {
+    overflow: hidden;
+}
+
+
+
+/** 选中标签页与导航栏颜色一致 Selected Tab - Color like toolbar ======================================================== */
+
+:root {
+    /* Fix for windows's system default theme. Using --toolbar-bgcolor fallback */
+    --tab-selected-bgcolor: rgb(255,255,255); !important; /* Original: rgb(255,255,255); */
+}
+
+#tabbrowser-tabs:not([movingtab]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab > .tab-stack > .tab-background[selected="true"] {
+    /* Original: linear-gradient(var(--lwt-selected-tab-background-color, transparent), var(--lwt-selected-tab-background-color, transparent)), linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)), var(--lwt-header-image, none)*/
+    background-image: linear-gradient(transparent, transparent),
+    linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)),
+    var(--lwt-header-image, none) !important;
+}
+
+
+
+/* 多个标签时的颜色 Multi Selected Color */
+#tabbrowser-tabs > #tabbrowser-arrowscrollbox > .tabbrowser-tab > .tab-stack > .tab-background[multiselected]:not([selected]) {
+    background-image: linear-gradient(var(--toolbar-bgcolor, transparent), var(--toolbar-bgcolor, transparent)),
+    linear-gradient(var(--toolbar-bgcolor), var(--toolbar-bgcolor)),
+    var(--lwt-header-image, none) !important;
+}
+
+.tab-background[multiselected]:not([selected]) > .tab-loading-burst:not([bursting]) {
+    background: color-mix(in srgb, currentColor 65%, transparent);
+    opacity: .3;
+}
+
+#TabsToolbar[brighttext] .tab-background[multiselected="true"]:not([selected="true"]) > .tab-loading-burst:not([bursting]) {
+    opacity: .15;
+}
+
+:root[style*="--lwt-accent-color: rgb(28, 27, 34); --lwt-text-color: rgba(251, 251, 254);"]:root:-moz-lwtheme-brighttext #tabbrowser-tabs:not([movingtab]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab > .tab-stack > .tab-background[multiselected]:not([selected]){
+    background-image: none !important;
+    box-shadow: none !important;
+}
+
+
+/*!* 去除标签页边框 *!*/
+/*.tab-background[multiselected=true] {*/
+/*    outline: 0px solid color-mix(in srgb, var(--focus-outline-color, currentColor) 0%, transparent)!important;*/
+/*}*/
+
+
+/* 标签页圆角 */
+.tab-background{
+    border-radius: 5px 5px 0 0 !important;
+}
+
+/* 标签页底部圆角 */
+:root:is(:not([lwtheme]), :not(:-moz-lwtheme)) .tab-background::before,
+:root:is(:not([lwtheme]), :not(:-moz-lwtheme)) .tab-background::after {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    width: 8px !important;
+    height: 8px !important;
+    bottom: 0 !important;
+    pointer-events: none !important;
+    clip-path: inset(0);
+}
+
+
+
+/** Selected Tab - Box Shadow ======================================================== */
+
+/* Pinned Tab - tabbrowser-arrowscrollbox overflowing */
+#tabbrowser-tabs[positionpinnedtabs] > #tabbrowser-arrowscrollbox > .tabbrowser-tab[pinned] {
+    z-index: 0 !important;
+}
+
+
+
+/** 选中标签页圆角 Selected Tab - Bottom Rounded Corner ======================================================== */
+
+#tabbrowser-tabs {
+    --tab-corner-rounding: 4px !important;
+    /* 10px looks about like chromium - 17px looks close to Australis tabs */
+    --tab-corner-padding: 1px !important;
+}
+
+/*:root[lwtheme="true"] tab[visuallyselected] > stack::before,*/
+/*:root[lwtheme="true"] tab[visuallyselected] > stack::after {*/
+/*    !* Box *!*/
+/*    content: "" !important;*/
+/*    display: block !important;*/
+/*    position: absolute !important;*/
+/*    z-index: 1 !important;*/
+/*    !* Shape *!*/
+/*    width: var(--tab-corner-rounding) !important;*/
+/*    height: 100% !important;*/
+/*    !* Color *!*/
+/*    fill: var(--toolbar-bgcolor) !important;*/
+/*    stroke: var(--tabs-border-color, transparent) !important;*/
+/*    -moz-context-properties: fill, stroke !important;*/
+/*    !* Image *!*/
+/*    background-size: var(--tab-corner-rounding);*/
+/*    background-repeat: no-repeat;*/
+/*    background-position-y: bottom;*/
+/*}*/
+
+/*:root[lwtheme="true"] tab[visuallyselected] > stack::before {*/
+/*    left: calc(var(--tab-corner-padding) - var(--tab-corner-rounding)) !important;*/
+/*    background-image: url(./icons/tab-bottom-corner-left.svg);*/
+/*}*/
+
+/*:root[lwtheme="true"] tab[visuallyselected] > stack::after {*/
+/*    left: auto;*/
+/*    right: calc(var(--tab-corner-padding) - var(--tab-corner-rounding));*/
+/*    background-image: url(./icons/tab-bottom-corner-right.svg);*/
+/*}*/
+
+
+
+/** 未选中标签页分隔线 Unselected Tab - Divide line ======================================================== */
+
+#tabbrowser-arrowscrollbox {
+    position:relative;
+}
+
+.tab-content::before{
+    left: -1px !important;
+}
+
+.tab-content::after{
+    right: 0 !important;
+}
+
+
+.tabbrowser-tab:not([visuallyselected]):not(:hover):not([multiselected]) + .tabbrowser-tab:not([visuallyselected]):not(:hover):not([multiselected]) .tab-content::before {
+    /* Box Model */
+    content: "";
+    display: block;
+    position: absolute; /* Position */
+    top: 50%;
+    transform: translateX(-2.5px) translateY(calc(-50% + 1px)); /* Bar shape */
+    width: 1.5px;
+    height: 20px;/* Bar Color */
+    opacity: var(--tab-separator-opacity);
+    transition: opacity .2s var(--ease-basic);
+    background-color: color-mix(in srgb, currentColor 40%, transparent);
+    right: -1px;
+}
+
+
+
+
+
+
+
+/* 最后标签页与新标签页距离 Latest Tab & New tab margin ======================================================= */
+#tabbrowser-arrowscrollbox:not([overflowing]) .tabbrowser-tab[last-visible-tab] {
+    margin-inline-end: 1px !important;
+}
+
+
+/* 新标签页设置 New tab button - Looks like tab */
+#tabs-newtab-button {
+
+    /* Original:
+        margin: 0 0 var(--tabs-navbar-shadow-size) !important
+        => Can't ovrride style. Therefore, we should approach it by bypass.
+        */
+    --tabs-navbar-shadow-size: -1px; /* Original: 1px */
+    --tabs-navbar-original-shadow-size: 1px;
+
+    /* Size */
+    -moz-box-align: stretch !important;
+    padding-top: var(--tab-block-margin) !important;
+}
+
+#tabs-newtab-button > .toolbarbutton-icon {
+    border-radius: var(--tab-border-radius) var(--tab-border-radius) 0 0 !important; /* Original: var(--tab-border-radius) */
+}
+
+/* Coner Rounding */
+#tabs-newtab-button:hover {
+    /* Color */
+    fill: color-mix(in srgb, currentColor 17%, transparent) !important; /* Replace var(--toolbarbutton-hover-background) - Hard coded for compatibility */
+    -moz-context-properties: fill !important;
+
+    /* Corner Image */
+    --newtab-position: calc((var(--tab-corner-rounding) / 2) * -1);
+    /*background-image: url("./icons/tab-bottom-corner-left.svg"), url("./icons/tab-bottom-corner-right.svg");*/
+    background-repeat: no-repeat;
+    background-position: left var(--newtab-position) bottom var(--tabs-navbar-original-shadow-size),  right var(--newtab-position)  bottom var(--tabs-navbar-original-shadow-size);
+    background-size: var(--tab-corner-rounding);
+}
+
+#tabs-newtab-button .toolbarbutton-icon {
+    padding: calc(var(--toolbarbutton-inner-padding) - (var(--tab-block-margin) / 4)) var(--toolbarbutton-inner-padding) calc(var(--toolbarbutton-inner-padding) + (var(--tab-block-margin) / 4) + var(--tabs-navbar-original-shadow-size)) !important;
+    -moz-context-properties: fill, fill-opacity;
+    fill: var(--toolbarbutton-icon-fill);
+    fill-opacity: var(--toolbarbutton-icon-fill-opacity);
+}
+
+:-moz-lwtheme-brighttext#tabs-newtab-button:hover .toolbarbutton-icon{
+    background-color: #475465 !important;
+}
+
+
+/*!** Clipped tabs - Letters cleary ****************************************** *!*/
+
+/*#tabbrowser-tabs[closebuttons=activetab] .tab-content:not([pinned]) {*/
+/*    padding-inline-start: 8px !important;*/
+/*}*/
+
+/*#tabbrowser-tabs[closebuttons=activetab] .tab-label-container[textoverflow][labeldirection="ltr"]:not([pinned]),*/
+/*#tabbrowser-tabs[closebuttons=activetab] .tab-label-container[textoverflow]:not([labeldirection]):-moz-locale-dir(ltr):not([pinned]) {*/
+/*    mask-image: linear-gradient(to right, black 70%, transparent) !important;*/
+/*}*/
+
+/*#tabbrowser-tabs[closebuttons=activetab] .tab-label-container[textoverflow][labeldirection="rtl"]:not([pinned]),*/
+/*#tabbrowser-tabs[closebuttons=activetab] .tab-label-container[textoverflow]:not([labeldirection]):-moz-locale-dir(rtl):not([pinned]) {*/
+/*    mask-image: linear-gradient(to left, black 70%, transparent) !important;*/
+/*}*/
+
+/** 鼠标放上去才显示关闭按钮 Clipped tabs - Show close button at hover *******************************/
+#tabbrowser-tabs[closebuttons="activetab"] > #tabbrowser-arrowscrollbox > .tabbrowser-tab:not([pinned]) > .tab-stack > .tab-content > .tab-close-button:not([selected="true"]) {
+    display: inline !important;
+}
+#tabbrowser-tabs[closebuttons=activetab] .tabbrowser-tab:not([visuallyselected], :hover) .tab-close-button {
+    visibility: collapse !important;
+}
+
+
+
+
+/** 声音播放中的标签页 Sound Tab - Hide Label *======================================================== */
+
+.tab-secondary-label:is([soundplaying], [muted], [activemedia-blocked], [pictureinpicture]){
+    display: none !important;
+}
+
+/** Sound Tab - Show with Favicons **/
+/* Makes the favicons always visible (also on hover) */
+.tab-icon-image:not([pinned]){
+    opacity: 1 !important
+}
+
+/* Makes the speaker icon to always appear if the tab is playing (not only on hover) */
+.tab-icon-overlay:not([crashed]),
+.tab-icon-overlay[pinned][crashed][selected] {
+    /* Position */
+    top: -3.5px !important;
+    inset-inline-end: -9px !important;
+    z-index: 1 !important;
+
+    /* Shape */
+    padding: 1.5px !important;
+    border-radius: 10px !important;
+    width:  17px !important;
+    height: 17px !important;
+}
+.tab-icon-overlay:is([soundplaying], [muted], [activemedia-blocked]):not([crashed]) {
+    padding: 0 !important;
+}
+.tab-icon-overlay:not([sharing], [crashed]):is([soundplaying], [muted], [activemedia-blocked]) {
+    /* Color */
+    color:  currentColor !important;
+    stroke: transparent !important;
+    background: transparent !important;
+    fill-opacity: 0.8 !important;
+    opacity: 1 !important;
+}
+.tab-icon-overlay:not([pinned], [sharing], [crashed]):is([soundplaying], [muted], [activemedia-blocked]) {
+    margin-inline-end: 9.5px !important;
+}
+
+/* None exist favicon */
+.tabbrowser-tab:not([image]) .tab-icon-overlay:not([pinned], [sharing],[crashed]) {
+    top: 0 !important;
+    inset-inline-end: 0 !important;
+    margin-inline-end: 5.5px !important;
+    padding: 2px 0 !important;
+}
+
+/* Busy - Show */
+.tab-throbber[busy], .tab-icon-pending[busy] {
+    opacity: 1 !important;
+}
+
+/* Busy - Overlay Position */
+.tabbrowser-tab:not([pinned])[busy] .tab-icon-overlay:is([soundplaying], [muted], [activemedia-blocked]) {
+    transform: translateX(-.5px) translateY(-2.5px);
+}
+.tabbrowser-tab:not([image]) .tab-icon-overlay:not([pinned], [sharing],[crashed])[busy] {
+    top: -3.5px !important;
+    inset-inline-end: -9px !important;
+    margin-inline-end: 9.5px !important;
+    padding: 1.5px !important;
+}
+
+/* Hover */
+.tab-icon-overlay:not([crashed])[soundplaying]:hover,
+.tab-icon-overlay:not([crashed])[muted]:hover,
+.tab-icon-overlay:not([crashed])[activemedia-blocked]:hover {
+    color:  var(--toolbar-bgcolor, white) !important;
+    stroke: var(--lwt-tab-text, var(--toolbar-color)) !important;
+    background-color: var(--lwt-tab-text, var(--toolbar-color)) !important;
+    fill-opacity: 0.95 !important;
+}
+
+#TabsToolbar[brighttext] .tab-icon-overlay:not([crashed])[soundplaying]:hover,
+#TabsToolbar[brighttext] .tab-icon-overlay:not([crashed])[muted]:hover,
+#TabsToolbar[brighttext] .tab-icon-overlay:not([crashed])[activemedia-blocked]:hover {
+    color: var(--toolbar-bgcolor, black) !important;
+}
+
+.tabbrowser-tab:not([image]) .tab-icon-overlay:not([pinned], [sharing],[crashed]):hover {
+    padding: 0 !important;
+}
+
+
+
+
+/** 视频画中画标签页 PictureInPicture Tab - Show PIP Icon ======================================================== */
+.tab-icon-sound[pictureinpicture]:not([pinned]) {
+    /* Shape */
+    display: -moz-inline-box !important;
+    width:  14px;
+    height: 14px;
+    -moz-box-ordinal-group: 2 !important;
+
+    /* Color */
+    fill: currentColor;
+    opacity: 0.8;
+    -moz-context-properties: fill;
+
+    /* Icon */
+    list-style-image: url(chrome://global/skin/media/picture-in-picture-open.svg);
+}
+.tab-icon-sound[pictureinpicture]:not([pinned])[selected] {
+    opacity: 0.95;
+}
+
+/* Close Button's position */
+.tabbrowser-tab[pictureinpicture]: not([pinned]) .tab-close-button {
+                                                     margin-left: 7px !important;
+                                                     -moz-box-ordinal-group: 2 !important;
+                                                 }
+
+.tabbrowser-tab[pictureinpicture]:not([pinned]):hover .tab-close-button {
+    margin-left: 0px !important;
+}
+
+
+
+
+
+/** 身份标签页 Container Tab - Color line at icon's bottom ======================================================== */
+.tab-context-line {
+    display: none;
+}
+
+.tab-icon-image {
+    box-sizing: content-box;
+    padding: 3px 0;
+
+    border-bottom: 2px solid var(--identity-icon-color);
+}
+
+/* None exist favicon - With Sound */
+.tabbrowser-tab:not([image]) .tab-icon-overlay:not([pinned], [sharing], [crashed]):is([soundplaying], [muted], [activemedia-blocked]) {
+    box-sizing: content-box;
+    padding: 3px 0;
+
+    border-radius: 0 !important;
+    border-bottom: 2px solid var(--identity-icon-color);
+}
+.tabbrowser-tab:not([image]) .tab-icon-overlay:not([pinned], [sharing], [crashed]):is([soundplaying], [muted], [activemedia-blocked]):hover {
+    padding: 0;
+
+    border-radius: 10px !important;
+    border-bottom: none;
+}
+
+/* Pinned Tab - Titlechanged Indicator override */
+.tabbrowser-tab:is([image], [pinned]) > .tab-stack > .tab-content[attention]:not([selected="true"]) .tab-icon-image,
+.tabbrowser-tab > .tab-stack > .tab-content[pinned][titlechanged]:not([selected="true"]) .tab-icon-image {
+    border-bottom: 2px solid transparent !important;
+}
+
+.tabbrowser-tab:is([image], [pinned])[usercontextid] > .tab-stack > .tab-content[attention]:not([selected="true"]),
+.tabbrowser-tab[usercontextid] > .tab-stack > .tab-content[pinned][titlechanged]:not([selected="true"]) {
+    /* Original: radial-gradient(circle, var(--attention-icon-color), var(--attention-icon-color) 2px, transparent 2px); */
+    --dotted-identity-image: radial-gradient(circle, var(--identity-icon-color), var(--identity-icon-color) 2px, transparent 2px);
+    background-image: var(--dotted-identity-image), var(--dotted-identity-image), var(--dotted-identity-image) !important;
+    background-position-x: 32%, 50%, 70% !important;
+}
+:root[uidensity=compact] .tabbrowser-tab:is([image], [pinned])[usercontextid] > .tab-stack > .tab-content[attention]:not([selected="true"]),
+:root[uidensity=compact] .tabbrowser-tab[usercontextid] > .tab-stack > .tab-content[pinned][titlechanged]:not([selected="true"]) {
+    /* Original: radial-gradient(circle, var(--attention-icon-color), var(--attention-icon-color) 2px, transparent 2px); */
+var(--dotted-identity-image) !important;
+    background-position-x: 30%, 50%, 70% !important;
+}
+
+/* Pinned Tab - Titlechanged & soundplaying */
+.tabbrowser-tab:is([image], [pinned])[usercontextid]:is([soundplaying], [muted], [activemedia-blocked]) > .tab-stack > .tab-content[attention]:not([selected="true"]),
+.tabbrowser-tab[usercontextid]:is([soundplaying], [muted], [activemedia-blocked]) > .tab-stack > .tab-content[pinned][titlechanged]:not([selected="true"]) {
+    background-position-x: calc(32% - 1px), calc(50% - 1px), calc(70% - 1px) !important;
+}
+:root[uidensity=compact] .tabbrowser-tab:is([image], [pinned])[usercontextid]:is([soundplaying], [muted], [activemedia-blocked]) > .tab-stack > .tab-content[attention]:not([selected="true"]),
+:root[uidensity=compact] .tabbrowser-tab[usercontextid]:is([soundplaying], [muted], [activemedia-blocked]) > .tab-stack > .tab-content[pinned][titlechanged]:not([selected="true"]) {
+var(--dotted-identity-image) !important;
+    background-position-x: calc(30% - 1px), calc(50% - 1px), calc(70% - 1px) !important;
+}
+
+/** Crashed Tab - Don't show Favicons **/
+.tab-icon-image[crashed] {
+    display: none !important;
+}

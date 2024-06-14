@@ -3,3 +3,6 @@
 @import url(css/newtab.css);
 
 /** Add your custom styles below **********************************************/
+@import url("css/edge-frfox/content/common.css");
+@import url("css/edge-frfox/content/newtab.css");
+@import url("css/edge-frfox/tweaks/sidebery.css") (-moz-bool-pref: "uc.tweak.theme.sidebery");

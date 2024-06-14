@@ -3,7 +3,7 @@
 
 
 // -------------------------- from Firefox-UI-Fix --------------------------
-
+/// Lepton v8.6.1
 // ** Theme Default Options ****************************************************
 // userchrome.css usercontent.css activate 默认加载userChrome.ss（FF69+）
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
@@ -255,8 +255,8 @@ user_pref("userChrome.tab.pip",                   true);
 user_pref("userChrome.tab.container",             true);
 user_pref("userChrome.tab.crashed",               true);
 
-user_pref("userChrome.fullscreen.overlap",        true);
-user_pref("userChrome.fullscreen.show_bookmarkbar", true);
+user_pref("userChrome.fullscreen.overlap",        false);
+user_pref("userChrome.fullscreen.show_bookmarkbar", false);
 
 user_pref("userChrome.icon.library",              true);
 user_pref("userChrome.icon.panel",                true);
@@ -386,22 +386,20 @@ user_pref("config.trim_on_minimize", true);//最小化时释放物理内存
 //pref("browser.sessionstore.max_tabs_undo", 20);//最近撤销标签历史最大数
 //pref("browser.urlbar.maxRichResults",10); //地址栏里的历史记录数量
 
+
 //标签选项
 //pref("toolkit.cosmeticAnimations.enabled", false);//关闭标签动画
 user_pref("browser.tabs.warnOnCloseOtherTabs", false); //关闭多个标签页时不提醒
 pref("browser.tabs.warnOnClose", false); //关闭所有标签页时不提醒
 user_pref("browser.tabs.closeWindowWithLastTab", false); //关闭最后一个标签时不关闭浏览器
-// user_pref("browser.tabs.loadBookmarksInTabs", true);//书签新标签页打开
-// user_pref("browser.search.openintab", true);//搜索栏新标签页打开
-// user_pref("browser.urlbar.openintab", true);//地址栏新标签页打开
-// user_pref("toolkit.tabbox.switchByScrolling", true);//标签栏鼠标滚轮切换标签页66+
 
+pref("privacy.userContext.enabled", true);//开启身份标签页
 //pref("browser.tabs.tabMinWidth", 76);//标签最小宽度
-pref("browser.tabs.insertAfterCurrent", true);//紧邻当前标签新建标签页
+pref("browser.tabs.insertAfterCurrent", true);//紧邻当前标签页打开
 pref("browser.bookmarks.openInTabClosesMenu", false);//中键点击书签不关闭菜单
-// pref("browser.link.open_newwindow", 3);//新标签页打开链接,而不是窗口1
-// pref("browser.link.open_newwindow.disabled_in_fullscreen", true);//新标签页打开链接,而不是窗口2
-
+pref("browser.link.open_newwindow", 3);//新标签页打开链接,而不是窗口1
+pref("browser.link.open_newwindow.disabled_in_fullscreen", true);//新标签页打开链接,而不是窗口2
+pref("browser.link.open_newwindow.restriction", 0);//所有通过JavaScript 打开的窗口均与browser.link.open_newwindow 的设置保持一致。
 
 pref("browser.search.openintab", true);//搜索栏在新标签页打开
 pref("browser.urlbar.openintab", true);//地址栏在新标签页打开
@@ -439,25 +437,25 @@ user_pref("toolkit.legacyUserProfileCustomizations.stylesheet", true);//开启us
 
 
 //功能去除
+// user_pref("browser.startup.blankWindow",false); //取消空白启动
 user_pref("extensions.pocket.enabled", false); //取消自带的稍后阅读功能 关闭pocket
 //user_pref("geo.enabled", false);//禁用地理位置
 //user_pref("browser.urlbar.oneOffSearches", false);//地址栏下拉菜单隐藏切换搜索引擎模块
 //user_pref("browser.taskbar.lists.enabled", false);//关闭常用Jumplist跳转列表
 //user_pref("dom.vr.enabled", false);//关闭vr
 //user_pref("signon.rememberSignons", false); //关闭自带的保存密码功能
-// pref("browser.aboutConfig.showWarning", false);//AboutConfig警告
 pref("accessibility.force_disabled", 1); //禁用无障碍环境
 pref("security.sandbox.content.level", 0); //禁用沙盒
 pref("security.mixed_content.block_active_content", false); //关闭ssl不安全内容和混合内容保护1 (让小书签在https页面上起作用 )
 pref("security.mixed_content.block_display_content", false); //关闭ssl不安全内容和混合内容保护2
 //pref("security.csp.enable", false);//禁用CSP (解除因为Content Security Policy 导致 bookmarklet 失效 )
-// pref("security.dialog_enable_delay", 0);//安装附加组件时的等待时间
 pref("browser.safebrowsing.downloads.enabled", false);//解决下载卡在最后一秒的问题
 pref("browser.backspace_action", 1); //去除退格键使网页后退的功能，改成向上滚动页面。
-pref("gfx.webrender.all", true);//开启webrender
-//pref("gfx.direct2d.disabled",false); // 开启direct2d，用于硬件加速，默认即是false
+user_pref("widget.macos.native-context-menus", false);
+user_pref("browser.theme.dark-private-windows", false);
+user_pref("widget.gtk.rounded-bottom-corners.enabled", true);
+user_pref("browser.theme.windows.accent-color-in-tabs.enabled", true);
 
-pref("datareporting.healthreport.uploadEnabled", false);//关闭安全检测健康中心
 //pref("datareporting.policy.dataSubmissionEnabled", false); //关闭安全检测健康中心
 //pref("dom.flyweb.enabled", false);//关闭物联网扩展
 //pref("security.enterprise_roots.enabled", true);//去除访问所有HTTPS网站显示连接不安全
@@ -468,10 +466,8 @@ pref("datareporting.healthreport.uploadEnabled", false);//关闭安全检测健�
 //pref("services.sync.engine.addons",false); //取消附加组件的同步功能
 //pref("services.sync.engine.prefs",false); //取消首选项的同步功能
 pref("media.gmp-widevinecdm.visible", false); //去除播放DRM内容黄条提示
-pref("browser.urlbar.openViewOnFocus", false); //关闭选中地址栏显示常用网站
-pref("browser.urlbar.suggest.topsites", false); //去除点击地址栏自动下拉菜单 77+
-// user_pref("findbar.modalHighlight", true);//ctrl+F查找页面变暗
-// pref("findbar.highlightAll", true);//ctrl+F关键词高亮
+pref("browser.urlbar.openViewOnFocus",false); // 关闭选中地址栏显示常用网站
+pref("browser.urlbar.suggest.topsites",false); //去除点击地址栏自动下拉菜单 77+
 
 
 //动画
@@ -501,17 +497,6 @@ user_pref("view_source.wrap_long_lines", true);//查看页面源代码时自动�
 // user_pref("toolkit.telemetry.updatePing.enabled", false);
 
 
-//Firefox 数据收集与使用
-// user_pref("datareporting.healthreport.uploadEnabled", false); //允许 Firefox 向 Mozilla 发送技术信息及交互数据 默认true
-// //pref("datareporting.policy.dataSubmissionEnabled", false); //关闭安全检测健康中心
-// user_pref("browser.discovery.enabled", false); //允许 Firefox 提供个性化的扩展推荐 默认true
-// user_pref("app.shield.optoutstudies.enabled", false); //允许 Firefox 安装并运行一些实验项目 默认true
-// user_pref("browser.crashReports.unsubmittedCheck.autoSubmit2", false); //允许 Firefox 代您发送积压的崩溃报告 默认false
-// //pref("dom.flyweb.enabled", false);//关闭物联网扩展
-// user_pref("network.IDN_show_punycode",true); //禁用 Ponycode URL
-
-// Allows theme to use different colours for light/dark mode.
-user_pref("layout.css.light-dark.enabled", true);
 
 /******
  *    name: arkenfox user.js
@@ -634,7 +619,7 @@ user_pref("_user.js.parrot", "0300 syntax error: the parrot's not pinin' for the
 /* 0320: disable recommendation pane in about:addons (uses Google Analytics) ***/
 user_pref("extensions.getAddons.showPane", false); // [HIDDEN PREF]
 /* 0321: disable recommendations in about:addons' Extensions and Themes panes [FF68+] ***/
-user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
+user_pref("extensions.htmlaboutaddons.recommendations.enabled", false); // 去除附加管理器页面的推荐扩展
 /* 0322: disable personalized Extension Recommendations in about:addons and AMO [FF65+]
  * [NOTE] This pref has no effect when Health Reports (0331) are disabled
  * [SETTING] Privacy & Security>Firefox Data Collection & Use>Allow Firefox to make personalized extension recommendations

@@ -1,31 +1,6 @@
-/*@name         RunningCheese Firefox
-  @author       RunningCheese
-  @homepage     https://www.runningcheese.com
-  @version      2022-05-05 for ff100+
-  @version      2021-09-21 for ff92+
-  @version      2021-07-22 for ff90+
-  @version      2021-01-27 for ff85+
-  @version      2020-09-24 for ff82+
-  @version      2020-07-04 for ff78+
-  @version      2020-02-11 for ff73+
-  @version      2019-12-22 for ff71+
-  @version      2019-09-22 for ff70+
-  @version      2019-05-23 
-  @version      2018-12-25 
-  @version      2018-11-12 
-  @version      2018-06-17 for ff60+
-  @version      2018-04-08       
-*/
-
 
 /* ===================================== 菜单栏 ===================================== */
 
-
-/*屏蔽Alt切换菜单 Block Alt Key to Show Menubar*/
-
-#toolbar-menubar [autohide="true"] {
-    display: none !important;
-}
 
 
 /*粘贴并转到置顶 Paste and Go Stick on Top*/
@@ -237,7 +212,6 @@ menuitem[anonid="paste-and-go"] {
 
 
 /* 隐藏链接右键菜单 Hidn link menu option*/
-#context-openlinkinusercontext-menu,
 #context-openlinkincurrent,
 #context-openlinkprivate,
 #context-openlink,
@@ -406,15 +380,6 @@ menuitem[anonid="paste-and-go"] {
     order: 0 !important;
 }
 
-#appMenu-proton-update-banner::before {
-    content: url(chrome://browser/skin/whatsnew.svg);
-}
-
-#appMenu-fxa-status2::before { /* Don't exist img tag */
-    content: url(chrome://browser/skin/fxa/avatar-empty.svg);
-    margin-top: 6px !important;
-}
-
 #appMenu-fxa-status2:is([fxastatus=signedin], [fxastatus=unverified], [fxastatus=login-failed])::before {
     display: none;
 }
@@ -427,91 +392,13 @@ menuitem[anonid="paste-and-go"] {
     background-image: var(--avatar-image-url) !important;
 }
 
-#appMenu-new-tab-button2 {
-    list-style-image: url(../icons/newtab.svg);
-}
-
-#appMenu-new-window-button2 {
-    list-style-image: url(chrome://browser/skin/window.svg);
-}
-
-#appMenu-new-private-window-button2 {
-    list-style-image: url(../icons/mask.svg);
-}
-
-#appMenu-bookmarks-button {
-    list-style-image: url(chrome://browser/skin/bookmark-hollow.svg);
-}
-
-#appMenu-history-button {
-    list-style-image: url(chrome://browser/skin/history.svg);
-}
-
-#appMenu-downloads-button {
-    list-style-image: url(chrome://browser/skin/downloads/downloads.svg);
-}
-
-#appMenu-passwords-button {
-    list-style-image: url(chrome://browser/skin/login.svg);
-}
-
-#appMenu-extensions-themes-button {
-    list-style-image: url(chrome://mozapps/skin/extensions/extension.svg);
-}
-
-#appMenu-print-button2 {
-    list-style-image: url(../icons/print.svg);
-}
-
-#appMenu-save-file-button2 {
-    list-style-image: url(../icons/save.svg);
-}
-
-#appMenu-find-button2 {
-    list-style-image: url(chrome://global/skin/icons/search-glass.svg);
-}
-
-#appMenu-translate-button {
-    list-style-image: url(../icons/translate.svg);
-}
-
 #appMenu-report-broken-site-button,
 #appMenu_help_reportSiteIssue {
     display: none !important;
 }
 
-#appMenu-report-broken-site-button,
-#appMenu_help_reportSiteIssue {
-    list-style-image: url("chrome://global/skin/icons/lightbulb.svg");
-}
-
-#appMenu-zoom-controls::before {
-    content: url(../icons/screenshot.svg);
-}
-
 #appMenu-zoom-controls .toolbarbutton-text {
     margin-left: -4px !important;
-}
-
-#appMenu-zoom-controls2::before {
-    content: url(../icons/screenshot.svg);
-    margin-left: 4px !important;
-}
-
-#appMenu-settings-button {
-    list-style-image: url(chrome://global/skin/icons/settings.svg);
-}
-
-#appMenu-more-button2 {
-    list-style-image: url(../icons/lab.svg);
-}
-
-#appMenu-help-button2 {
-    list-style-image: url(chrome://global/skin/icons/help.svg);
-}
-
-#appMenu-quit-button2 {
-    list-style-image: url(../icons/quit.svg);
 }
 
 
@@ -524,24 +411,6 @@ menuitem[anonid="paste-and-go"] {
     margin-inline-end: var(--arrowpanel-menuicon-padding);
 }
 
-.syncNowBtn {
-    visibility: visible !important;
-    order: -1 !important;
-    margin-inline-end: var(--arrowpanel-menuicon-padding);
-    margin-top: 3px !important;
-}
-
-.syncnow-label {
-    margin-left: -4px !important;
-}
-
-#PanelUI-fxa-menu-setup-sync-button {
-    list-style-image: url(chrome://browser/skin/sync.svg) !important;
-}
-
-#PanelUI-fxa-menu-connect-device-button {
-    list-style-image: url(../icons/add-device.svg) !important;
-}
 
 #PanelUI-fxa-menu-connect-device-button .toolbarbutton-icon,
 #PanelUI-fxa-menu-account-signout-button .toolbarbutton-icon {
@@ -549,18 +418,6 @@ menuitem[anonid="paste-and-go"] {
     height: 16px !important;
 }
 
-#PanelUI-fxa-menu-sendtab-button {
-    list-style-image: url(../icons/send-to-device.svg) !important;
-}
-
-#PanelUI-fxa-menu-sync-prefs-button,
-#PanelUI-remotetabs-view-managedevices {
-    list-style-image: url(chrome://global/skin/icons/settings.svg) !important;
-}
-
-#PanelUI-fxa-menu-account-signout-button {
-    list-style-image: url(../icons/sign-out.svg) !important;
-}
 
 .PanelUI-remotetabs-notabsforclient-label {
     margin-inline-start: calc(var(--arrowpanel-menuicon-padding) + var(--arrowpanel-menuitem-padding)) !important;
@@ -568,106 +425,19 @@ menuitem[anonid="paste-and-go"] {
 }
 
 
-.pageAction-sendToDevice-device.subviewbutton.sync-menuitem.sendtab-target[clientType=""] {
-    list-style-image: url(../icons/send-to-device.svg);
-}
-
-.pageAction-sendToDevice-device.subviewbutton.sync-menuitem.sendtab-target:not([clientType]) {
-    list-style-image: url(chrome://global/skin/icons/settings.svg);
-}
-
-#PanelUI-fxa-menu-account-signout-button {
-    list-style-image: url(chrome://browser/skin/sign-out.svg);
-}
-
 #PanelUI-sign-out-separator {
     display: none;
 }
 
-
-/*= 书签面板 Panel - Bookmark =========================================================*/
-
-#panelMenuBookmarkThisPage {
-    list-style-image: url("chrome://browser/skin/bookmark-hollow.svg");
-}
-
-panelMenuBookmarkThisPage[starred] {
-    list-style-image: url("chrome://browser/skin/bookmark.svg");
-}
-
-#panelMenu_searchBookmarks {
-    list-style-image: url("chrome://global/skin/icons/search-glass.svg");
-}
-
-#panelMenu_viewBookmarksToolbar {
-    list-style-image: url("chrome://browser/skin/bookmarks-toolbar.svg");
-}
-
-#panelMenu_showAllBookmarks {
-    list-style-image: url("chrome://browser/skin/bookmark-star-on-tray.svg");
-}
-
-
-/*= 历史面板 Panel - History ==========================================================*/
-
-#appMenuRecentlyClosedTabs {
-    list-style-image: url("chrome://browser/skin/tab.svg");
-}
-
-#appMenuRecentlyClosedWindows {
-    list-style-image: url("chrome://browser/skin/window.svg");
-}
-
-#appMenuSearchHistory {
-    list-style-image: url("chrome://global/skin/icons/search-glass.svg");
-}
-
-#appMenuRestoreSession,
-#appMenu-restoreSession {
-    list-style-image: url("../icons/restore-session.svg");
-}
-
-#appMenuClearRecentHistory {
-    list-style-image: url("chrome://browser/skin/forget.svg");
-}
-
-#PanelUI-historyMore {
-    list-style-image: url("chrome://browser/skin/history.svg");
-}
-
-#appMenu-library-recentlyClosedTabs {
-    list-style-image: url("../icons/movetowindow-16.svg");
-}
-
-#appMenu-library-recentlyClosedWindows {
-    list-style-image: url("../icons/restore-session.svg");
-}
 
 #appmenu-developer-tools {
     margin-left: 32px !important;
 }
 
 
-/*= 资源库面板 Panel - Library ========================================================*/
-
-#appMenu-library-bookmarks-button {
-    list-style-image: url(chrome://browser/skin/bookmark.svg);
-}
-
-#appMenu-library-history-button {
-    list-style-image: url(chrome://browser/skin/history.svg);
-}
-
-#appMenu-library-downloads-button {
-    list-style-image: url(chrome://browser/skin/downloads/downloads.svg);
-}
-
 
 /*= 下载面板 Panel - Downloads ======================================================*/
 
-#downloadsHistory {
-    list-style-image: url(chrome://browser/skin/downloads/downloads.svg);
-}
 
 #downloadsHistory .box-inherit.button-box {
     display: -moz-inline-box !important;
@@ -676,25 +446,6 @@ panelMenuBookmarkThisPage[starred] {
 
 /*= 标签栏面板 Tabbar - All Tab Menu ==================================================*/
 
-#allTabsMenu-searchTabs {
-    list-style-image: url(chrome://global/skin/icons/search-glass.svg);
-}
-
-#allTabsMenu-undoCloseTab {
-    list-style-image: url(chrome://global/skin/icons/undo.svg);
-}
-
-/*#allTabsMenu-containerTabsButton {*/
-/*    list-style-image: url(../icons/container-openin-16.svg);*/
-/*}*/
-
-#allTabsMenu-hiddenTabsButton {
-    list-style-image: url(../icons/password-hide.svg);
-}
-
-#allTabsMenu-containerTabsView .subviewbutton:last-child {
-    list-style-image: url(chrome://global/skin/icons/settings.svg);
-}
 
 
 /** 右键菜单图标 Context Menu - Icons ============================================================================= */
@@ -792,221 +543,9 @@ menupopup menu:not([type="checkbox"]) {
     }
 }
 
-
-/*= 标签页右键菜单 tabContextMenu =========================================================*/
-
-
-#context_openANewTab {
-    --menuitem-image: url(../icons/newtab.svg);
-}
-
-.share-tab-url-item {
-    --menuitem-image: url(chrome://browser/skin/share.svg);
-}
-
-
-#context_reloadTab,
-#context_reloadSelectedTabs,
-#context-reload {
-    --menuitem-image: url(chrome://global/skin/icons/reload.svg) !important;
-}
-
-#context_toggleMuteTab,
-#context_toggleMuteSelectedTabs {
-    --menuitem-image: url(../icons/muted.svg);
-}
-
-#context_toggleMuteTab[muted],
-#context_toggleMuteSelectedTabs[muted] {
-    --menuitem-image: url(../icons/unmuted.svg);
-}
-
-#context_pinTab,
-#context_pinSelectedTabs {
-    --menuitem-image: url(../icons/pin-tab.svg);
-}
-
-#context_unpinTab,
-#context_unpinSelectedTabs {
-    --menuitem-image: url(../icons/unpin-tab.svg);
-}
-
-#context_duplicateTab,
-#context_duplicateTabs {
-    --menuitem-image: url(../icons/tab-copy.svg);
-}
-
-#context_bookmarkTab,
-#context_bookmarkSelectedTabs {
-    --menuitem-image: url(chrome://browser/skin/bookmark-hollow.svg);
-}
-
-#context_moveTabOptions {
-    --menuitem-image: url(../icons/arrow-swap.svg);
-}
-
-#context_sendTabToDevice {
-    --menuitem-image: url(../icons/send-to-device.svg);
-}
-
-#context_shareTabURL { /* At windows */
-    --menuitem-image: url(../icons/share.svg);
-}
-
-#context_reopenInContainer {
-    --menuitem-image: url(../icons/user.svg);
-}
-
-#context_selectAllTabs {
-    --menuitem-image: url(../icons/tab-multiple.svg);
-}
-
-#context_closeTab {
-    --menuitem-image: url(chrome://global/skin/icons/close.svg);
-}
-
-#context_closeTabOptions {
-    --menuitem-image: url(../icons/arrow-right.svg);
-}
-
-
-#context_undoCloseTab {
-    --menuitem-image: url(../icons/undo.svg);
-}
-
-
-/*= 右键菜单图标 contentAreaContextMenu =================================================*/
-
-
-#context-imagetext {
-    --menuitem-image: url(../icons/copy_text.svg);
-}
-
-#context-viewsource-goToLine {
-    --menuitem-image: url(../icons/arrow-right.svg);
-}
-
-#context-viewsource-wrapLongLines { /* checkbox */
-    /* --menuitem-image: url(../icons/arrow-sort-down-lines.svg); */
-}
-
-#context-viewsource-highlightSyntax { /* checkbox */
-    /* --menuitem-image: url(../icons/code.svg); */
-}
-
-#spell-no-suggestions {
-    --menuitem-image: url(../icons/text-proofing-tools.svg);
-}
-
-#spell-add-to-dictionary {
-    --menuitem-image: url(../icons/book-add.svg);
-}
-
-#spell-undo-add-to-dictionary {
-    --menuitem-image: url(chrome://global/skin/icons/undo.svg);
-}
-
-#context-openlinkincurrent {
-    --menuitem-image: url(../icons/link-square.svg);
-}
-
-menuitem[command="Browser:NewUserContextTab"][data-usercontextid="0"],
-#context-openlinkincontainertab {
-    --menuitem-image: url(../icons/newtab.svg);
-}
-
-#context-openlinkintab {
-    --menuitem-image: url(../icons/newtab.svg);
-}
-
-#context-openlinkinusercontext-menu {
-    --menuitem-image: url(../icons/container-openin-16.svg);
-}
-
-#context-openlink {
-    --menuitem-image: url(chrome://browser/skin/window.svg);
-}
-
 #context-openlinkprivate {
-    --menuitem-image: url(chrome://browser/skin/privateBrowsing.svg);
-}
-
-#context-bookmarklink {
-    --menuitem-image: url(chrome://browser/skin/bookmark.svg);
-}
-
-#context-savelink {
-    --menuitem-image: url(../icons/save.svg);
-}
-
-#context-savelinktopocket {
-    --menuitem-image: url(chrome://browser/skin/pocket-outline.svg);
-}
-
-#context-copyemail {
-    --menuitem-image: url(chrome://browser/skin/mail.svg);
-}
-
-#context-copylink,
-#context-stripOnShareLink {
-    --menuitem-image: url(../icons/link.svg);
-}
-
-#context-sendlinktodevice {
-    --menuitem-image: url(../icons/send-to-device.svg);
-}
-
-#context-media-play {
-    --menuitem-image: url(chrome://global/skin/media/play-fill.svg);
-}
-
-#context-media-pause {
-    --menuitem-image: url(chrome://global/skin/media/pause-fill.svg);
-}
-
-#context-media-mute {
-    --menuitem-image: url(chrome://global/skin/media/audio-muted.svg);
-}
-
-#context-media-unmute {
-    --menuitem-image: url(chrome://global/skin/media/audio.svg);
-}
-
-#context-media-playbackrate {
-    --menuitem-image: url(../icons/time-picker.svg);
-}
-
-#context-media-loop { /* checkbox */
-    /* --menuitem-image: url(../icons/arrow-repeat-all.svg); */
-}
-
-#context-leave-dom-fullscreen {
-    --menuitem-image: url(chrome://global/skin/media/fullscreenExitButton.svg);
-}
-
-#context-video-fullscreen {
-    --menuitem-image: url(chrome://global/skin/media/fullscreenEnterButton.svg);
-}
-
-#context-media-hidecontrols {
-    --menuitem-image: url(../icons/eye-hide.svg);
-}
-
-#context-media-showcontrols {
-    --menuitem-image: url(../icons/eye-show.svg);
-}
-
-#context-viewvideo {
-    --menuitem-image: url(../icons/video.svg);
-}
-
-#use-relay-mask {
-    --menuitem-image: url("../icons/relay-logo.svg");
-}
-
-menuitem[command="Browser:OpenAboutContainers"] {
-    --menuitem-image: url("../icons/setting2.svg");
-}
+     --menuitem-image: url(chrome://browser/skin/privateBrowsing.svg);
+ }
 
 
 /* 画中画图标调整 */
@@ -1020,257 +559,9 @@ menuitem[command="Browser:OpenAboutContainers"] {
     display: none;
 }
 
-#context-reloadimage {
-    --menuitem-image: url(../icons/image-arrow-counterclockwise.svg);
-}
-
-#context-viewimage {
-    --menuitem-image: url(../icons/image-add.svg);
-}
-
-#context-saveimage {
-    --menuitem-image: url(../icons/image.svg);
-}
-
-#context-video-saveimage {
-    --menuitem-image: url(../icons/video-snapshot.svg);
-}
-
-#context-savevideo {
-    --menuitem-image: url(../icons/save.svg);
-}
-
-#context-saveaudio {
-    --menuitem-image: url(chrome://global/skin/media/audio.svg);
-}
-
-#context-copyimage-contents {
-    --menuitem-image: url(../icons/image-copy.svg);
-}
-
-#context-copyimage,
-#context-copyvideourl,
-#context-copyaudiourl {
-    --menuitem-image: url(../icons/link.svg);
-}
-
-#context-sendimage,
-#context-sendvideo,
-#context-sendaudio {
-    --menuitem-image: url(chrome://browser/skin/mail.svg);
-}
-
-#context-viewimageinfo {
-    --menuitem-image: url(chrome://global/skin/icons/info.svg);
-}
-
-#context-viewimagedesc {
-    --menuitem-image: url(../icons/image-alt-text.svg);
-}
-
-#context-setDesktopBackground {
-    --menuitem-image: url(../icons/resize-image.svg);
-}
-
-#context-ctp-play {
-    --menuitem-image: url(chrome://global/skin/icons/plugin.svg);
-}
-
-#context-ctp-hide {
-    --menuitem-image: url(chrome://global/skin/icons/plugin-blocked.svg);
-}
-
-#context-savepage {
-    --menuitem-image: url(../icons/save.svg);
-}
-
-#context-pocket {
-    --menuitem-image: url(chrome://browser/skin/pocket-outline.svg);
-}
-
-#context-sendpagetodevice {
-    --menuitem-image: url(../icons/send-to-device.svg);
-}
-
-#fill-login {
-    --menuitem-image: url(../icons/password.svg);
-}
-
-#fill-login-generated-password {
-    --menuitem-image: url(chrome://browser/skin/login.svg);
-}
-
-#manage-saved-logins {
-    --menuitem-image: url(../icons/key-multiple.svg);
-}
-
-#context-undo {
-    --menuitem-image: url(chrome://global/skin/icons/undo.svg);
-}
-
-#context-redo {
-}
-
-#context-cut {
-    --menuitem-image: url(chrome://browser/skin/edit-cut.svg);
-}
-
-#context-copy {
-    --menuitem-image: url(../icons/edit-copy.svg);
-}
-
-#context-paste, #context-paste-no-formatting {
-    --menuitem-image: url(chrome://browser/skin/edit-paste.svg);
-}
-
-#context-delete {
-    --menuitem-image: url(chrome://global/skin/icons/delete.svg);
-}
-
-#context-selectall {
-    --menuitem-image: url(../icons/select-all-on.svg);
-}
-
-#context-print-selection {
-    --menuitem-image: url(chrome://global/skin/icons/print.svg);
-}
-
-#context-take-screenshot {
-    --menuitem-image: url(chrome://browser/skin/screenshot.svg);
-}
-
-#context-keywordfield {
-    --menuitem-image: url(chrome://browser/skin/bookmark.svg);
-}
-
-#context-searchselect,
-#context-searchselect-private {
-    --menuitem-image: url(chrome://global/skin/icons/search-glass.svg);
-}
-
-#frame {
-    --menuitem-image: url(../icons/command-frames.svg);
-}
-
-#spell-check-enabled { /* checkbox */
-}
-
-#spell-add-dictionaries-main {
-    --menuitem-image: url(../icons/book-add.svg);
-}
-
-#spell-dictionaries {
-    --menuitem-image: url(../icons/book.svg);
-}
-
-#context-bidi-text-direction-toggle {
-    --menuitem-image: url(../icons/text-direction-horizontal-ltr.svg);
-}
-
-#context-bidi-page-direction-toggle {
-    --menuitem-image: url(../icons/document-landscape-split-hint.svg);
-}
-
-#context-viewpartialsource-selection,
-#context-viewsource {
-    --menuitem-image: url(../icons/search-file.svg);
-}
-
-#context-inspect-a11y {
-    --menuitem-image: url(chrome://devtools/skin/images/tool-accessibility.svg);
-}
-
-#context-inspect {
-    --menuitem-image: url(../icons/command-pick.svg);
-}
-
-#context-media-eme-learnmore { /* iconic */
-}
-
-
-#context-back {
-    --menuitem-image: url(chrome://browser/skin/back.svg);
-}
-
-#context-forward {
-    --menuitem-image: url(chrome://browser/skin/forward.svg);
-}
-
-#context-reload {
-    --menuitem-image: url(chrome://browser/skin/reload.svg);
-}
-
-#context-stop {
-    --menuitem-image: url(chrome://global/skin/icons/close.svg);
-}
-
-#context-bookmarkpage {
-    --menuitem-image: url(chrome://browser/skin/bookmark-hollow.svg);
-}
-
-
-/*= 复制粘贴图标 contentAreaContextMenu ================================================= */
-
-
-#context-undo {
-    background-image: url("chrome://global/skin/icons/undo.svg");
-    background-repeat: no-repeat !important;
-}
-
-#context-cut {
-    background-image: url("chrome://browser/skin/edit-cut.svg");
-    background-repeat: no-repeat !important;
-}
-
-#context-copy {
-    background-image: url("../icons/edit-copy.svg");
-    background-repeat: no-repeat !important;
-}
-
-#context-paste {
-    background-image: url("chrome://browser/skin/edit-paste.svg");
-    background-repeat: no-repeat !important;
-}
-
-#context-delete {
-    background-image: url("chrome://global/skin/icons/delete.svg");
-    background-repeat: no-repeat !important;
-}
-
 #menu_undo, #menu_cut, #menu_copy, #menu_paste, #menu_delete {
     background-image: none !important;
 }
-
-#spell-check-enabled .menu-iconic-icon {
-    background-image: url("../icons/keyboard.svg");
-    background-repeat: no-repeat !important;
-    background-size: 16px;
-    background-position: center;
-}
-
-
-/* 侧边栏面板 Sidebar Menu - Icons ==================================================*/
-
-#sidebar-switcher-bookmarks:is(menuitem) {
-    --menuitem-image: url("chrome://browser/skin/bookmark-hollow.svg");
-}
-
-#sidebar-switcher-history:is(menuitem) {
-    --menuitem-image: url("chrome://browser/skin/history.svg");
-}
-
-#sidebar-switcher-tabs:is(menuitem) {
-    --menuitem-image: url("chrome://browser/skin/synced-tabs.svg");
-}
-
-#sidebar-reverse-position:is(menuitem) {
-    --menuitem-image: url("../icons/arrow-swap.svg") !important;
-}
-
-#sidebarMenu-popup > *:is(menuitem)[data-l10n-id="sidebar-menu-close"] {
-    --menuitem-image: url("chrome://global/skin/icons/close.svg");
-}
-
 
 /*右键菜单黑夜模式反转 ============================================================*/
 
@@ -1358,5 +649,11 @@ menuitem[command="Browser:OpenAboutContainers"] {
     display: none !important;
 }
 
+/* 修复 menu 选中 */
+menupopup > menuitem:is([checked="true"], [selected="true"]) .menu-iconic-icon {
+    list-style-image: url("../icons/menu-check.svg") !important;
 
-
+    @media (-moz-platform: linux) {
+        list-style-image: none !important;
+    }
+}
