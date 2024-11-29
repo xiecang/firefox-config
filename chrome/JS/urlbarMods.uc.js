@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           Urlbar Mods
-// @version        1.7.8
+// @version        1.8.0
 // @author         aminomancer
 // @homepageURL    https://github.com/aminomancer/uc.css.js
 // @description    Make some minor modifications to the urlbar. See the code comments in the script for more details.
@@ -77,10 +77,11 @@ class UrlbarMods {
         // an extra class. so you can style these yourself if you want but duskFox
         // already styles them just like the other error pages — with the triangular
         // warning sign.
-        "add new tooltips and classes for identity icon": Services.prefs.getBoolPref(
-            "urlbarMods.addNewTooltipsAndClassesForIdentityIcon",
-            true
-        ),
+        "add new tooltips and classes for identity icon":
+            Services.prefs.getBoolPref(
+                "urlbarMods.addNewTooltipsAndClassesForIdentityIcon",
+                true
+            ),
 
         // this sets attributes on each urlbar result according to 1) its
         // corresponding search engine; and 2) its source device, if it's a remote
@@ -235,7 +236,7 @@ class UrlbarMods {
             aboutNetErrorPage,
             httpsOnlyErrorPage,
         };
-        gIdentityHandler._localPDF = function() {
+        gIdentityHandler._localPDF = function () {
             if (!this._isPDFViewer) return false;
             switch (gBrowser.selectedBrowser.documentURI?.scheme) {
                 case "chrome":
@@ -248,7 +249,7 @@ class UrlbarMods {
             }
         };
         // Extend the built-in method that sets the identity icon's tooltip and class.
-        gIdentityHandler._refreshIdentityIcons = function() {
+        gIdentityHandler._refreshIdentityIcons = function () {
             let icon_label = "";
             let tooltip = "";
             if (this._isSecureInternalUI) {
@@ -322,15 +323,9 @@ class UrlbarMods {
                     this._identityBox.classList.add("readerMode");
                 }
             } else {
-                let warnOnInsecure =
-                    this._insecureConnectionIconEnabled ||
-                    (this._insecureConnectionIconPBModeEnabled &&
-                        PrivateBrowsingUtils.isWindowPrivate(window));
-                let className = warnOnInsecure ? "notSecure" : "unknownIdentity";
+                let className = "notSecure";
                 this._identityBox.className = className;
-                tooltip = warnOnInsecure
-                    ? gNavigatorBundle.getString("identity.notSecure.tooltip")
-                    : "";
+                tooltip = gNavigatorBundle.getString("identity.notSecure.tooltip");
                 let warnTextOnInsecure =
                     this._insecureConnectionTextEnabled ||
                     (this._insecureConnectionTextPBModeEnabled &&
@@ -429,7 +424,7 @@ class UrlbarMods {
         }
         // override the internal dragstart callback so that
         // it uses variables instead of "white" and "black"
-        gIdentityHandler.onDragStart = function(event) {
+        gIdentityHandler.onDragStart = function (event) {
             const inputStyle = getComputedStyle(gURLBar.inputField);
             const identityStyle = getComputedStyle(gURLBar._identityBox);
             const iconStyle = getComputedStyle(
@@ -557,12 +552,11 @@ class UrlbarMods {
             "resource:///modules/UrlbarSearchUtils.sys.mjs"
         );
         const UrlbarProvidersManager = gURLBar.view.controller.manager;
-        const UrlbarProviderAutofill = UrlbarProvidersManager.getProvider(
-            "Autofill"
-        );
+        const UrlbarProviderAutofill =
+            UrlbarProvidersManager.getProvider("Autofill");
         // these variables look unused but they're for the functions that will be modified
         // dynamically and evaluated later like provider.startQuery.toSource()
-        let showRemoteIconsPref = this.showRemoteIconsPref;
+        let { showRemoteIconsPref } = this;
         if (!gURLBar.view.hasOwnProperty("uniqueIdSerial")) {
             gURLBar.view.uniqueIdSerial = 1;
         }
@@ -751,39 +745,19 @@ class UrlbarMods {
         if (interventions) manager.unregisterProvider(interventions);
     }
     urlbarResultsSorting() {
-        let UnifiedComplete = gURLBar.view.controller.manager.muxers.get(
-            "UnifiedComplete"
-        );
-        let sortSrc = UnifiedComplete.sort.toSource();
-        if (!sortSrc.includes(`UrlbarPrefs.get("showSearchSuggestionsFirst")`)) {
-            const lazy = {};
-            ChromeUtils.defineESModuleGetters(lazy, {
-                QuickSuggest: "resource:///modules/QuickSuggest.sys.mjs",
-                UrlbarPrefs: "resource:///modules/UrlbarPrefs.sys.mjs",
-                UrlbarProviderQuickSuggest:
-                    "resource:///modules/UrlbarProviderQuickSuggest.sys.mjs",
-                UrlbarProviderTabToSearch:
-                    "resource:///modules/UrlbarProviderTabToSearch.sys.mjs",
-                UrlbarSearchUtils: "resource:///modules/UrlbarSearchUtils.sys.mjs",
-            });
-            const { UrlbarUtils } = ChromeUtils.importESModule(
-                "resource:///modules/UrlbarUtils.sys.mjs"
-            );
-            XPCOMUtils.defineLazyGetter(lazy, "logger", () =>
-                UrlbarUtils.getLogger({ prefix: "MuxerUnifiedComplete" })
-            );
-            eval(
-                `UnifiedComplete.sort = function ${sortSrc
-                    .replace(/sort/, ``)
-                    .replace(
-                        /showSearchSuggestionsFirst\: true/,
-                        `showSearchSuggestionsFirst: lazy.UrlbarPrefs.get("showSearchSuggestionsFirst")`
-                    )}`
-            );
+        if (!UrlbarPrefs._originalMakeResultGroups) {
+            UrlbarPrefs._originalMakeResultGroups = UrlbarPrefs.makeResultGroups;
+            UrlbarPrefs.makeResultGroups = function makeResultGroups(options) {
+                let newOptions = {
+                    ...options,
+                    showSearchSuggestionsFirst: this.get("showSearchSuggestionsFirst"),
+                };
+                return this._originalMakeResultGroups(newOptions);
+            };
         }
     }
     underlineSpaceResults() {
-        gURLBar.view._addTextContentWithHighlights = function(
+        gURLBar.view._addTextContentWithHighlights = function (
             node,
             text,
             highlights
@@ -843,15 +817,15 @@ class UrlbarMods {
             SearchOneOffs: "resource:///modules/SearchOneOffs.sys.mjs",
             UrlbarSearchOneOffs: "resource:///modules/UrlbarSearchOneOffs.sys.mjs",
         });
-        lazy.SearchOneOffs.prototype.setTooltipForEngineButton = function(button) {
+        lazy.SearchOneOffs.prototype.setTooltipForEngineButton = function (button) {
             button.setAttribute("engine", button.engine.name || button.engine.title);
             button.setAttribute("tooltiptext", button.engine.name);
         };
-        lazy.UrlbarSearchOneOffs.prototype.setTooltipForEngineButton = function(
+        lazy.UrlbarSearchOneOffs.prototype.setTooltipForEngineButton = function (
             button
         ) {
             button.setAttribute("engine", button.engine.name || button.engine.title);
-            let aliases = button.engine.aliases;
+            let { aliases } = button.engine;
             if (!aliases.length) {
                 button.setAttribute("tooltiptext", button.engine.name);
                 return;

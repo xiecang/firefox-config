@@ -144,34 +144,3 @@ viewImage.addEventListener('command',  function (e) {
 //   }
 // })();
 
-
-
-// 07.  新标签打开侧边栏历史页面 
-(function() {
-   
-if (!location.href.startsWith('chrome://browser/content/browser.x'))
-    return;
-   
-  eval('PlacesUIUtils.openNodeWithEvent = '  + PlacesUIUtils.openNodeWithEvent.toString()
-    .replace(' && lazy.PlacesUtils.nodeIsBookmark(aNode)', '')
-    .replace('getBrowserWindow(window)',
-      '(window && window.document.documentElement.getAttribute("windowtype") == "navigator:browser") ? window : BrowserWindowTracker.getTopWindow()')
-  );
-   
-  let onPopupshowing = function() {
-    let historyMenu = document.getElementById('history-menu');
-    if (!historyMenu._placesView) {
-      new HistoryMenu(event);
-      historyMenu._placesView._onCommand = function HM__onCommand(aEvent) {
-        let placesNode = aEvent.target._placesNode;
-        if (placesNode) {
-          PlacesUIUtils.openNodeWithEvent(placesNode, aEvent);
-        };
-      };
-    };
-  };
-   
-  let historyPopup = document.getElementById('historyMenuPopup');
-  historyPopup.setAttribute('onpopupshowing', '(' + onPopupshowing.toString() + ')()');
-   
-})();

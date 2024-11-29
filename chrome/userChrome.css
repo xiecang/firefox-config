@@ -13,7 +13,8 @@
 @import url("css/edge-frfox/global/popup.css");
 @import url("css/edge-frfox/global/browser.css");
 @import url("css/edge-frfox/global/tree.css");
-@import url("css/edge-frfox/global/tweaks.css") (-moz-bool-pref: "uc.tweak.hide-tabs-bar");
+/* Edge-Frfox tweaks */
+@import url("css/edge-frfox/global/tweaks.css");
 @import url("css/edge-frfox/tweaks/hide-tabs-bar.css");
 
 @import url("css/edge-frfox/content/common.css");

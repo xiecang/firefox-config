@@ -37,7 +37,10 @@
 // 02. 中键点击地址栏自动复制网址
 if (location.href.startsWith('chrome://browser/content/browser.x')) {
     document.getElementById('urlbar').addEventListener('click', function(e) {
-        if (e.button == 1)  var gClipboardHelper = Components.classes['@mozilla.org/widget/clipboardhelper;1'].getService(Components.interfaces.nsIClipboardHelper);gClipboardHelper.copyString(gBrowser.currentURI.spec);
+        if (e.button == 1) {
+            var gClipboardHelper = Components.classes['@mozilla.org/widget/clipboardhelper;1'].getService(Components.interfaces.nsIClipboardHelper);
+            gClipboardHelper.copyString(gBrowser.currentURI.spec);
+        }
     }, false);
 }
 

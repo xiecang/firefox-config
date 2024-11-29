@@ -1,3 +1,24 @@
+/*@name         RunningCheese Firefox
+  @author       RunningCheese
+  @homepage     https://www.runningcheese.com
+  @version      2022-05-04 for ff100+
+  @version      2021-07-22 for ff90+
+  @version      2021-01-27 for ff85+
+  @version      2020-09-24 for ff82+
+  @version      2020-07-04 for ff78+
+  @version      2020-02-11 for ff73+
+  @version      2019-12-22 for ff71+
+  @version      2019-09-22 for ff70+
+  @version      2019-05-23
+  @version      2018-12-25
+  @version      2018-11-12
+  @version      2018-06-17 for ff60+
+  @version      2018-04-08
+*/
+
+
+
+
 
 /* ===================================== 标签栏调整 ===================================== */
 
@@ -681,38 +702,7 @@
     border-bottom: none;
 }
 
-/* Pinned Tab - Titlechanged Indicator override */
-.tabbrowser-tab:is([image], [pinned]) > .tab-stack > .tab-content[attention]:not([selected="true"]) .tab-icon-image,
-.tabbrowser-tab > .tab-stack > .tab-content[pinned][titlechanged]:not([selected="true"]) .tab-icon-image {
-    border-bottom: 2px solid transparent !important;
-}
-
-.tabbrowser-tab:is([image], [pinned])[usercontextid] > .tab-stack > .tab-content[attention]:not([selected="true"]),
-.tabbrowser-tab[usercontextid] > .tab-stack > .tab-content[pinned][titlechanged]:not([selected="true"]) {
-    /* Original: radial-gradient(circle, var(--attention-icon-color), var(--attention-icon-color) 2px, transparent 2px); */
-    --dotted-identity-image: radial-gradient(circle, var(--identity-icon-color), var(--identity-icon-color) 2px, transparent 2px);
-    background-image: var(--dotted-identity-image), var(--dotted-identity-image), var(--dotted-identity-image) !important;
-    background-position-x: 32%, 50%, 70% !important;
-}
-:root[uidensity=compact] .tabbrowser-tab:is([image], [pinned])[usercontextid] > .tab-stack > .tab-content[attention]:not([selected="true"]),
-:root[uidensity=compact] .tabbrowser-tab[usercontextid] > .tab-stack > .tab-content[pinned][titlechanged]:not([selected="true"]) {
-    /* Original: radial-gradient(circle, var(--attention-icon-color), var(--attention-icon-color) 2px, transparent 2px); */
-var(--dotted-identity-image) !important;
-    background-position-x: 30%, 50%, 70% !important;
-}
-
-/* Pinned Tab - Titlechanged & soundplaying */
-.tabbrowser-tab:is([image], [pinned])[usercontextid]:is([soundplaying], [muted], [activemedia-blocked]) > .tab-stack > .tab-content[attention]:not([selected="true"]),
-.tabbrowser-tab[usercontextid]:is([soundplaying], [muted], [activemedia-blocked]) > .tab-stack > .tab-content[pinned][titlechanged]:not([selected="true"]) {
-    background-position-x: calc(32% - 1px), calc(50% - 1px), calc(70% - 1px) !important;
-}
-:root[uidensity=compact] .tabbrowser-tab:is([image], [pinned])[usercontextid]:is([soundplaying], [muted], [activemedia-blocked]) > .tab-stack > .tab-content[attention]:not([selected="true"]),
-:root[uidensity=compact] .tabbrowser-tab[usercontextid]:is([soundplaying], [muted], [activemedia-blocked]) > .tab-stack > .tab-content[pinned][titlechanged]:not([selected="true"]) {
-var(--dotted-identity-image) !important;
-    background-position-x: calc(30% - 1px), calc(50% - 1px), calc(70% - 1px) !important;
-}
-
-/** Crashed Tab - Don't show Favicons **/
-.tab-icon-image[crashed] {
-    display: none !important;
-}
+/*!** Crashed Tab - Don't show Favicons **!*/
+/*.tab-icon-image[crashed] {*/
+/*    display: none !important;*/
+/*}*/
