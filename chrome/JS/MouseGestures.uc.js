@@ -8,7 +8,8 @@
 // @include              chrome://browser/content/browser.xul
 // @charset              UTF-8
 // ==/UserScript==
-(() => {
+
+function __main() {
 	'use strict';
 	let ucjsMouseGestures = {
 		lastX: 0,
@@ -20,8 +21,8 @@
 		shouldFireContext: false,
 		GESTURES: {
 			'L': {name: '后退', cmd: () => gBrowser.webNavigation.canGoBack && gBrowser.webNavigation.goBack()},
-            'R': {name: '前进', cmd: () => gBrowser.webNavigation.canGoForward && gBrowser.webNavigation.goForward()},
-   
+			'R': {name: '前进', cmd: () => gBrowser.webNavigation.canGoForward && gBrowser.webNavigation.goForward()},
+
 
 			'U': {name: '向上滚动', cmd: () => goDoCommand('cmd_scrollPageUp')},
 			'D': {name: '向下滚动', cmd: () => goDoCommand('cmd_scrollPageDown')},
@@ -33,14 +34,14 @@
 
 			'RL': {name: '打开新标签', cmd:  function() { BrowserOpenTab();  }},
 			'LR': {name: '恢复关闭标签', cmd:  function() { try {	document.getElementById('History:UndoCloseTab').doCommand();} catch (ex) {if ('undoRemoveTab' in gBrowser) gBrowser.undoRemoveTab();	else throw "Session Restore feature is disabled."}	} },
-			
-    
+
+
 			'UL': {name: '激活左边的标签页', cmd:  function(event) {gBrowser.tabContainer.advanceSelectedTab(-1, true);}},
 			'UR': {name: '激活右边的标签页', cmd: function(event) {gBrowser.tabContainer.advanceSelectedTab(1, true);}},
 
 
- 			'W+': {name: '激活右边的标签页', cmd: function(event) { gBrowser.tabContainer.advanceSelectedTab(+1, true); }},
-     		'W-': {name: '激活左边的标签页', cmd: function(event) { gBrowser.tabContainer.advanceSelectedTab(-1, true); }},
+			'W+': {name: '激活右边的标签页', cmd: function(event) { gBrowser.tabContainer.advanceSelectedTab(+1, true); }},
+			'W-': {name: '激活左边的标签页', cmd: function(event) { gBrowser.tabContainer.advanceSelectedTab(-1, true); }},
 
 
 			'DL': {name: '添加书签', cmd:  function() {document.getElementById("Browser:AddBookmarkAs").doCommand();	} },
@@ -59,11 +60,11 @@
 			'LD': {name: '侧边栏打开当前页', cmd: function(event) {SidebarUI.toggle("viewHistorySidebar");	}},
 
 
-             //C字形：
+			//C字形：
 			'LDR': {name: '打开书签工具栏',  cmd: function(event) {	var bar = document.getElementById("PersonalToolbar"); setToolbarVisibility(bar, bar.collapsed);	}},
 
-			'RLRL': {name: '重启浏览器', cmd: function(event) {		Services.startup.quit(Services.startup.eRestart | Services.startup.eAttemptQuit); 	}}, 
-			'LRLR': {name: '重启浏览器', cmd: function(event) {		Services.startup.quit(Services.startup.eRestart | Services.startup.eAttemptQuit);   }}, 
+			'RLRL': {name: '重启浏览器', cmd: function(event) {		Services.startup.quit(Services.startup.eRestart | Services.startup.eAttemptQuit); 	}},
+			'LRLR': {name: '重启浏览器', cmd: function(event) {		Services.startup.quit(Services.startup.eRestart | Services.startup.eAttemptQuit);   }},
 
 
 
@@ -71,9 +72,9 @@
 			'RULDR': {name: '添加到稍后阅读',  cmd: function(event) {document.getElementById("pageAction-urlbar-_cd7e22de-2e34-40f0-aeff-cec824cbccac_").click();}},
 
 
-		   'LDL': {name: '关闭左侧标签页', cmd: function(event) {	for (let i = gBrowser.selectedTab._tPos - 1; i >= 0; i--) if (!gBrowser.tabs[i].pinned){ gBrowser.removeTab(gBrowser.tabs[i], {animate: true});}}},
-		   'RDR': {name: '关闭右侧标签页', cmd: function(event) {gBrowser.removeTabsToTheEndFrom(gBrowser.selectedTab);	gBrowser.removeTabsToTheEndFrom(gBrowser.selectedTab);gBrowser.removeTabsToTheEndFrom(gBrowser.selectedTab);}},
-		   'RDLRDL': {name: '关闭其他标签页', cmd: function(event) {gBrowser.removeAllTabsBut(gBrowser.selectedTab);}},
+			'LDL': {name: '关闭左侧标签页', cmd: function(event) {	for (let i = gBrowser.selectedTab._tPos - 1; i >= 0; i--) if (!gBrowser.tabs[i].pinned){ gBrowser.removeTab(gBrowser.tabs[i], {animate: true});}}},
+			'RDR': {name: '关闭右侧标签页', cmd: function(event) {gBrowser.removeTabsToTheEndFrom(gBrowser.selectedTab);	gBrowser.removeTabsToTheEndFrom(gBrowser.selectedTab);gBrowser.removeTabsToTheEndFrom(gBrowser.selectedTab);}},
+			'RDLRDL': {name: '关闭其他标签页', cmd: function(event) {gBrowser.removeAllTabsBut(gBrowser.selectedTab);}},
 
 			'LDRUL': {name: '打开鼠标手势设置文件',  cmd: function(event) {FileUtils.getFile('UChrm',['SubScript', 'MouseGestures.uc.js']).launch();}},
 
@@ -93,79 +94,79 @@
 		},
 		handleEvent: function(event) {
 			switch (event.type) {
-			case 'mousedown':
-				if (event.button == 2) {
-					(gBrowser.mPanelContainer || gBrowser.tabpanels).addEventListener("mousemove", this, false);
-					this.isMouseDownR = true;
-					this.hideFireContext = false;
-					[this.lastX, this.lastY, this.directionChain] = [event.screenX, event.screenY, ''];
-				}
-				if (event.button == 0) {
-					this.isMouseDownR = false;
-					this.stopGesture();
-				}
-				break;
-			case 'mousemove':
-				if (this.isMouseDownR) {
-					let[subX, subY] = [event.screenX - this.lastX, event.screenY - this.lastY];
-					let[distX, distY] = [(subX > 0 ? subX : (-subX)), (subY > 0 ? subY : (-subY))];
-					let direction;
-					if (distX < 10 && distY < 10) return;
-					if (distX > distY) direction = subX < 0 ? 'L' : 'R';
-					else direction = subY < 0 ? 'U' : 'D';
-					if (!this.xdTrailArea) {
-						this.xdTrailArea = document.createXULElement('hbox');
-						let canvas = document.createElementNS('http://www.w3.org/1999/xhtml', 'canvas');
-						canvas.setAttribute('width', window.screen.width);
-						canvas.setAttribute('height', window.screen.height);
-						this.xdTrailAreaContext = canvas.getContext('2d');
-						this.xdTrailArea.style.cssText = '-moz-user-focus: none !important;-moz-user-select: none !important;display: -moz-box !important;box-sizing: border-box !important;pointer-events: none !important;margin: 0 !important;padding: 0 !important;width: 100% !important;height: 100% !important;border: none !important;box-shadow: none !important;overflow: hidden !important;background: none !important;opacity: 1 !important;position: fixed !important;z-index: 2147483647 !important;display: inline !important;';
-						this.xdTrailArea.appendChild(canvas);
-						gBrowser.selectedBrowser.parentNode.insertBefore(this.xdTrailArea, gBrowser.selectedBrowser.nextSibling);
+				case 'mousedown':
+					if (event.button == 2) {
+						(gBrowser.mPanelContainer || gBrowser.tabpanels).addEventListener("mousemove", this, false);
+						this.isMouseDownR = true;
+						this.hideFireContext = false;
+						[this.lastX, this.lastY, this.directionChain] = [event.screenX, event.screenY, ''];
 					}
-					if (this.xdTrailAreaContext) {
+					if (event.button == 0) {
+						this.isMouseDownR = false;
+						this.stopGesture();
+					}
+					break;
+				case 'mousemove':
+					if (this.isMouseDownR) {
+						let[subX, subY] = [event.screenX - this.lastX, event.screenY - this.lastY];
+						let[distX, distY] = [(subX > 0 ? subX : (-subX)), (subY > 0 ? subY : (-subY))];
+						let direction;
+						if (distX < 10 && distY < 10) return;
+						if (distX > distY) direction = subX < 0 ? 'L' : 'R';
+						else direction = subY < 0 ? 'U' : 'D';
+						if (!this.xdTrailArea) {
+							this.xdTrailArea = document.createXULElement('hbox');
+							let canvas = document.createElementNS('http://www.w3.org/1999/xhtml', 'canvas');
+							canvas.setAttribute('width', window.screen.width);
+							canvas.setAttribute('height', window.screen.height);
+							this.xdTrailAreaContext = canvas.getContext('2d');
+							this.xdTrailArea.style.cssText = '-moz-user-focus: none !important;-moz-user-select: none !important;display: -moz-box !important;box-sizing: border-box !important;pointer-events: none !important;margin: 0 !important;padding: 0 !important;width: 100% !important;height: 100% !important;border: none !important;box-shadow: none !important;overflow: hidden !important;background: none !important;opacity: 1 !important;position: fixed !important;z-index: 2147483647 !important;display: inline !important;';
+							this.xdTrailArea.appendChild(canvas);
+							gBrowser.selectedBrowser.parentNode.insertBefore(this.xdTrailArea, gBrowser.selectedBrowser.nextSibling);
+						}
+						if (this.xdTrailAreaContext) {
+							this.hideFireContext = true;
+							this.xdTrailAreaContext.strokeStyle = '#0065ff';
+							this.xdTrailAreaContext.lineJoin = 'round';
+							this.xdTrailAreaContext.lineCap = 'round';
+							this.xdTrailAreaContext.lineWidth = 2;
+							this.xdTrailAreaContext.beginPath();
+							this.xdTrailAreaContext.moveTo(this.lastX - gBrowser.selectedBrowser.screenX, this.lastY - gBrowser.selectedBrowser.screenY);
+							this.xdTrailAreaContext.lineTo(event.screenX - gBrowser.selectedBrowser.screenX, event.screenY - gBrowser.selectedBrowser.screenY);
+							this.xdTrailAreaContext.closePath();
+							this.xdTrailAreaContext.stroke();
+							this.lastX = event.screenX;
+							this.lastY = event.screenY;
+						}
+						if (direction != this.directionChain.charAt(this.directionChain.length - 1)) {
+							this.directionChain += direction;
+							StatusPanel._label = this.GESTURES[this.directionChain] ? '手势: ' + this.directionChain + ' ' + this.GESTURES[this.directionChain].name : '未知手势:' + this.directionChain;
+						}
+					}
+					break;
+				case 'mouseup':
+					if (this.isMouseDownR && event.button == 2) {
+						if (this.directionChain) this.shouldFireContext = false;
+						this.isMouseDownR = false;
+						this.directionChain && this.stopGesture();
+					}
+					break;
+				case 'contextmenu':
+					if (this.isMouseDownR || this.hideFireContext) {
+						this.shouldFireContext = true;
+						this.hideFireContext = false;
+						event.preventDefault();
+						event.stopPropagation();
+					}
+					break;
+				case 'DOMMouseScroll':
+					if (this.isMouseDownR) {
+						this.shouldFireContext = false;
 						this.hideFireContext = true;
-						this.xdTrailAreaContext.strokeStyle = '#0065ff';
-						this.xdTrailAreaContext.lineJoin = 'round';
-						this.xdTrailAreaContext.lineCap = 'round';
-						this.xdTrailAreaContext.lineWidth = 2;
-						this.xdTrailAreaContext.beginPath();
-						this.xdTrailAreaContext.moveTo(this.lastX - gBrowser.selectedBrowser.screenX, this.lastY - gBrowser.selectedBrowser.screenY);
-						this.xdTrailAreaContext.lineTo(event.screenX - gBrowser.selectedBrowser.screenX, event.screenY - gBrowser.selectedBrowser.screenY);
-						this.xdTrailAreaContext.closePath();
-						this.xdTrailAreaContext.stroke();
-						this.lastX = event.screenX;
-						this.lastY = event.screenY;
+						this.directionChain = 'W' + (event.detail > 0 ? '+' : '-');
+						this.stopGesture();
 					}
-					if (direction != this.directionChain.charAt(this.directionChain.length - 1)) {
-						this.directionChain += direction;
-						StatusPanel._label = this.GESTURES[this.directionChain] ? '手势: ' + this.directionChain + ' ' + this.GESTURES[this.directionChain].name : '未知手势:' + this.directionChain;
-					}
-				}
-				break;
-			case 'mouseup':
-				if (this.isMouseDownR && event.button == 2) {
-					if (this.directionChain) this.shouldFireContext = false;
-					this.isMouseDownR = false;
-					this.directionChain && this.stopGesture();
-				}
-				break;
-			case 'contextmenu':
-				if (this.isMouseDownR || this.hideFireContext) {
-					this.shouldFireContext = true;
-					this.hideFireContext = false; 
-					event.preventDefault();
-					event.stopPropagation();
-				}
-				break;
-			case 'DOMMouseScroll':
-				if (this.isMouseDownR) {
-					this.shouldFireContext = false;
-					this.hideFireContext = true;
-					this.directionChain = 'W' + (event.detail > 0 ? '+' : '-');
-					this.stopGesture();
-				}
-				break;
+					break;
 			}
 		},
 		stopGesture: function() {
@@ -181,8 +182,16 @@
 		}
 	};
 	ucjsMouseGestures.init();
-})();
+}
 
-
-
-
+if (gBrowserInit.delayedStartupFinished) {
+	__main()
+} else {
+	let delayedListener = (subject, topic) => {
+		if (topic == "browser-delayed-startup-finished" && subject == window) {
+			Services.obs.removeObserver(delayedListener, topic);
+			__main()
+		}
+	};
+	Services.obs.addObserver(delayedListener, "browser-delayed-startup-finished");
+}
